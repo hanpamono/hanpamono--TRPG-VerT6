@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聖杯戦争TRPG Ver.T ルールブック（非公式まとめ）</title>
+<style>
+:root{
+  --bg:#f4f6fa; --panel:#ffffff; --ink:#1f2530; --sub:#5a6373;
+  --accent:#7b1e1e; --accent2:#1e3a7b; --line:#d8dee9; --hover:#eef2f9;
+  --chip:#eef1f7; --warn:#fff6e6; --warnline:#e6c87a;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.85;font-size:17px;}
+a{color:var(--accent2);text-decoration:none;}
+a:hover{text-decoration:underline;}
+#layout{display:flex;min-height:100vh;}
+#sidebar{width:300px;flex:0 0 300px;background:#12161f;color:#dfe5ef;position:sticky;top:0;height:100vh;overflow-y:auto;padding:0;}
+#sidebar .brand{padding:18px 18px 14px;border-bottom:1px solid #2a3140;position:sticky;top:0;background:#12161f;z-index:5;}
+#sidebar .brand h1{font-size:17px;margin:0 0 4px;color:#fff;}
+#sidebar .brand p{font-size:12px;margin:0;color:#8a93a6;}
+#search{width:100%;margin-top:10px;padding:9px 11px;border-radius:6px;border:1px solid #2a3140;background:#1c2230;color:#fff;font-size:14px;}
+#searchInfo{font-size:12px;color:#8a93a6;padding:6px 18px 0;min-height:1.2em;}
+#nav{padding:10px 0 60px;}
+#nav .grp{font-size:12px;color:#6f7b92;padding:14px 18px 4px;letter-spacing:.05em;}
+#nav a{display:block;color:#c3ccdb;padding:7px 18px 7px 22px;font-size:14px;border-left:3px solid transparent;}
+#nav a:hover{background:#1c2230;text-decoration:none;border-left-color:var(--accent2);}
+#nav a.active{background:#1c2230;border-left-color:var(--accent2);color:#fff;}
+#main{flex:1 1 auto;min-width:0;}
+#content{max-width:1080px;margin:0 auto;padding:30px 40px 120px;}
+h2.chapter{font-size:27px;margin:54px 0 18px;padding:15px 20px;color:#fff;background:linear-gradient(100deg,var(--accent),#3a1010);border-radius:10px;scroll-margin-top:20px;}
+h3{font-size:21px;margin:36px 0 12px;padding:9px 0 9px 14px;border-left:6px solid var(--accent2);color:var(--accent2);scroll-margin-top:20px;}
+h4{font-size:18px;margin:24px 0 8px;color:var(--accent);}
+p{margin:8px 0;}
+ul,ol{margin:8px 0 8px 4px;padding-left:22px;}
+li{margin:4px 0;}
+.notice{background:var(--warn);border:1px solid var(--warnline);border-radius:8px;padding:15px 19px;margin:16px 0;font-size:16px;}
+.notice b{color:var(--accent);}
+.tip{background:#eef4ff;border:1px solid #bcd0f0;border-radius:8px;padding:13px 17px;margin:14px 0;font-size:16px;}
+.qa{background:#f3f8f0;border:1px solid #c4ddb6;border-radius:8px;padding:13px 17px;margin:12px 0;font-size:16px;}
+.qa .q{font-weight:bold;color:var(--accent2);}
+.qa .a{margin-top:4px;}
+.tablewrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:8px;}
+table{border-collapse:collapse;width:100%;background:var(--panel);font-size:15px;}
+th,td{border:1px solid var(--line);padding:9px 11px;vertical-align:top;text-align:left;}
+th{background:#e9eef7;color:var(--accent2);font-weight:bold;white-space:nowrap;}
+td.center,th.center{text-align:center;}
+tr:nth-child(even) td{background:#fafbfe;}
+.skill{border:1px solid var(--line);border-radius:8px;margin:12px 0;background:var(--panel);overflow:hidden;}
+.skill .hd{background:#eef1f7;padding:9px 15px;font-size:16px;font-weight:bold;color:var(--accent);border-bottom:1px solid var(--line);}
+.skill .bd{padding:11px 15px;font-size:15.5px;}
+.skill .bd .row{margin:2px 0;}
+.skill .bd .lbl{display:inline-block;min-width:5em;color:var(--sub);font-weight:bold;}
+.toc-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin:16px 0;}
+.toc-card ol{columns:2;column-gap:40px;}
+@media(max-width:680px){.toc-card ol{columns:1;}}
+.backtop{position:fixed;right:20px;bottom:20px;background:var(--accent);color:#fff;border-radius:50%;width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 3px 10px rgba(0,0,0,.25);z-index:20;}
+.backtop:hover{text-decoration:none;background:#5a1414;color:#fff;}
+.badge{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:2px 11px;font-size:13px;margin:2px 3px;}
+hr{border:none;border-top:1px dashed var(--line);margin:30px 0;}
+mark{background:#fff2a8;color:#1f2530;padding:0 2px;border-radius:3px;}
+.diagram{border:1px solid var(--line);border-radius:8px;background:#fafbfe;padding:18px;margin:16px 0;overflow-x:auto;}
+.diagram .dgrid{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:nowrap;min-width:560px;}
+.dbox{border:2px solid var(--accent2);background:#fff;border-radius:8px;padding:10px 14px;text-align:center;font-size:14px;font-weight:bold;color:var(--ink);}
+.dbox.sub{border-color:var(--line);font-weight:normal;background:#f3f6fc;}
+.dconn{flex:0 0 28px;text-align:center;color:var(--sub);font-weight:bold;font-size:18px;}
+.dcol{display:flex;flex-direction:column;gap:10px;}
+.dwrap-title{font-weight:bold;color:var(--accent);text-align:center;border:2px solid var(--accent);border-radius:6px;background:#fff3ec;padding:6px;margin-bottom:14px;}
+.nest{font-size:14px;line-height:1.5;}
+.nest .lv{border-left:3px solid var(--line);padding:3px 0 3px 12px;margin:2px 0;}
+.nest .l0{border-left-color:#1e3a7b;background:#eaf0fb;font-weight:bold;}
+.nest .l1{border-left-color:#3b6;background:#eef7ee;}
+.nest .l2{border-left-color:#e0a93a;background:#fdf6e6;}
+.nest .l3{border-left-color:#d98c3a;background:#fbeede;}
+.nest .l4{border-left-color:#c0392b;background:#fbe9e7;}
+.field{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+.fside{border:2px dashed var(--line);border-radius:10px;padding:12px;min-width:200px;}
+.fside h5{margin:0 0 8px;text-align:center;color:var(--accent2);}
+.fcell{border:1px solid var(--line);border-radius:6px;padding:8px;margin:6px 0;text-align:center;font-size:13px;}
+.fcell.fz{background:#dbe6fb;}
+.fcell.bz{background:#fbe0e0;}
+#toggle{display:none;}
+@media(max-width:900px){
+  #sidebar{position:fixed;left:-300px;z-index:50;transition:left .25s;}
+  #sidebar.open{left:0;}
+  #toggle{display:flex;position:fixed;top:12px;left:12px;z-index:60;background:var(--accent);color:#fff;border:none;border-radius:8px;width:44px;height:44px;font-size:20px;align-items:center;justify-content:center;cursor:pointer;}
+  #content{padding:60px 16px 100px;}
+}
+</style>
+</head>
+<body>
+<button id="toggle" aria-label="メニュー">☰</button>
+<div id="layout">
+
+<aside id="sidebar">
+  <div class="brand">
+    <h1>聖杯戦争TRPG Ver.T</h1>
+    <p>非公式ルールまとめ（二次創作）</p>
+    <input id="search" type="text" placeholder="🔍 ページ内を検索…">
+  </div>
+  <div id="searchInfo"></div>
+  <nav id="nav">
+    <div class="grp">基本ルール</div>
+    <a href="#world">1. 世界観設定</a>
+    <a href="#terms">2. 基本用語・表記</a>
+    <a href="#flow">3. ゲームの進行</a>
+    <a href="#cc-common">4. キャラクリ・共通編</a>
+    <a href="#cc-servant">5. キャラクリ・サーヴァント編</a>
+    <a href="#cc-master">6. キャラクリ・マスター編</a>
+    <a href="#judge">7. 判定関連</a>
+    <a href="#battle">8. 戦闘関連</a>
+    <a href="#alliance">9. 同盟関連</a>
+    <a href="#subjugation">10. 討伐令関連</a>
+    <a href="#qa">11. Q&amp;A・エラッタ</a>
+    <div class="grp">拡張ルール</div>
+    <a href="#ex-skill">追加スキル/宝具</a>
+    <a href="#ex-class">階級制度</a>
+    <a href="#ex-double">亜種二連聖杯戦争</a>
+  </nav>
+</aside>
+
+<main id="main">
+<div id="content">
+
+<header style="text-align:center;margin-bottom:30px;">
+  <h1 style="font-size:32px;color:var(--accent);margin-bottom:6px;">聖杯戦争TRPG Ver.T</h1>
+  <p style="color:var(--sub);">非公式・二次創作ルールブック まとめ</p>
+</header>
+
+<div class="notice">
+  <b>＝注意書き＝</b><br>
+  これは TYPE-MOON 原作の「Fateシリーズ」に登場する「聖杯戦争」と呼ばれるシステムを独自解釈し、非公式TRPGとして再設計した二次創作物です。情報の妥当性や正確性について保証するものではなく、ご利用につきましては自己責任となりますのでご了承ください。<br><br>
+  当システムは「TRPG聖杯戦争/Another ver3.10」を大本にした改編システムです。厳密には改編版「Ver.G」の改編版「Ver.L」をさらに改編したルールになります。趣味の範疇として利用することを前提に作成したため、GMのバランス感覚やPLの自制心に大きく依存したシステムとなっています。少なくない欠陥を抱えていますが、何卒ご容赦ください。
+</div>
+
+<div class="toc-card">
+<h3 style="margin-top:0;border:none;padding-left:0;">目次</h3>
+<ol>
+<li><a href="#world">世界観設定</a></li>
+<li><a href="#terms">基本用語＆表記解説</a></li>
+<li><a href="#flow">ゲームの進行について</a></li>
+<li><a href="#cc-common">キャラクリエイト／共通編</a></li>
+<li><a href="#cc-servant">キャラクリエイト／サーヴァント編</a></li>
+<li><a href="#cc-master">キャラクリエイト／マスター編</a></li>
+<li><a href="#judge">判定関連</a></li>
+<li><a href="#battle">戦闘関連</a></li>
+<li><a href="#alliance">同盟関連</a></li>
+<li><a href="#subjugation">討伐令関連</a></li>
+<li><a href="#qa">聖杯戦争Q&amp;A</a></li>
+<li><a href="#ex-skill">拡張ルール各種</a></li>
+</ol>
+</div>
+
+<h2 class="chapter" id="world">1. 世界観設定</h2>
+<p>本作で取り扱う「聖杯戦争」とは、1940年代に行われた第三次冬木聖杯戦争の参加者であるダーニック・プレストーン・ユグドミレニアによって世界中に拡散された冬木の聖杯戦争を模した儀式…所謂「アポクリファ世界線」にて言及された「<b>亜種聖杯戦争</b>」を指している。</p>
+<p>聖杯戦争、それは魔術師たちが過去の英雄たちの分身である英霊を使い魔として召喚・使役し、覇を競い合わせる殺し合い。敗北した英霊の魂は「聖杯」にくべられ、勝者の願いを叶える「願望器」完成のための贄となる。</p>
+<p>本作では勝ち残った英霊(サーヴァント)と召喚主(マスター)、そして聖杯を所有する監督役(GM)の3人が「完成した聖杯」という魔力リソースを分配して、各々の願いを叶えることができる。</p>
+<p>開催地は基本的に監督役(GM)が選出し、そこに最低二人以上の参加者(PL)が集まることで儀式開催される。参加者は前もって監督役から配られた「令呪」を保有しており、戦争の開始宣言に先んじてサーヴァントの召喚が可能。そしてサーヴァントとマスターの2人を1つ陣営としてみなし、全ての陣営が揃った段階で監督役(GM)が開催地に聖杯の元となる「器(うつわ)」を土地の霊脈に接続。儀式としての聖杯戦争が起動する。</p>
+<p>…以上が基本的な世界観であるが、こまやかな設定については本作を遊ぶGMが自由に設定してよい。</p>
+
+<h3>世界観用語：原作世界観にて用いられる用語</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th>用語</th><th>解説</th></tr></thead>
+<tbody>
+<tr><td>聖杯</td><td>「万能の願望器」とも呼ばれる魔術式。莫大な魔力リソースを保有しており、リソースの範囲内なら「あらゆる過程を省略して結果をもたらす」ことが可能。ただし死者の蘇生と言った「この世に存在しないもの」あるいは「いかなる手段を以てしても実現不可能なもの」を叶えることは原則として不可能とされている。</td></tr>
+<tr><td>聖杯戦争</td><td>「聖杯」を完成させるため、複数の魔術師(召喚主)とサーヴァントが行うバトルロワイヤル形式の魔術儀式。もともとは日本の地方都市「冬木」にて行われていた儀式であり、当システムの世界観においては第二次世界大戦中に世界中へ儀式の手法が拡散された。この拡散された手法にて実行された儀式は「亜種聖杯戦争」と呼ばれる。</td></tr>
+<tr><td>監督役</td><td>聖杯戦争を管理し、儀式が問題なく遂行されるかを管理する存在。システム的にはゲーム内処理を一手に担う役職「GM（ゲームマスター）」であり、円滑なセッションの進行のためであればシステムに手を加える権限も有する。</td></tr>
+<tr><td>サーヴァント</td><td>過去の英雄、偉人を召喚し、使い魔として使役する存在。通常の人間とは隔絶した戦闘能力を持つ。システム的にはPLが作成し、操作するキャラクターの一体で、主に戦闘面を担当する。また、マスターと比べて高いステータスと強力なスキル、そして「宝具」という必殺技を保有している。</td></tr>
+<tr><td>マスター</td><td>サーヴァントを召喚し、使役する魔術師(召喚主)の呼称。システム的にはPLが作成し、操作するキャラクターの一体であり、主にサーヴァントのサポートを担当する。</td></tr>
+<tr><td>令呪</td><td>マスターに与えられる、自分のサーヴァントに対する3回の絶対命令権。魔力リソースとしての側面も有しており、スキル/宝具のコストとして使用することも可能。監督役(GM)は予備の令呪を所有しており、必要であれば参加者に分配することもできる。</td></tr>
+<tr><td>スキル</td><td>主にサーヴァントが保有している特殊能力を指す。マスターが保有する能力は「マスタースキル」と呼称される。</td></tr>
+<tr><td>宝具</td><td>主にサーヴァントが保有している奥義、必殺技を指す。マスターが保有しているものは「マスター宝具」と呼称される。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 class="chapter" id="terms">2. 基本用語＆表記解説</h2>
+<p>TRPGとして聖杯戦争を遊ぶうえで事前に理解してほしい用語/表記の一覧。</p>
+<h3>括弧表記：本システムで用いられている括弧の意味</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th>括弧</th><th>意味</th></tr></thead>
+<tbody>
+<tr><td class="center">「　」</td><td>特定用語を強調する際に用いる括弧。例：「エンカウントフェイズ」「クリンナップフェイズ」など</td></tr>
+<tr><td class="center">【　】</td><td>ステータスを表記する際に用いる括弧。例：【筋力】【魔力】など</td></tr>
+<tr><td class="center">〔　〕</td><td>プレイヤーがキャラクター作成時に埋めなければならない括弧。例：〔ｎ〕点、〔〇〕攻撃など</td></tr>
+<tr><td class="center">『　』</td><td>補正値の数値を記載する際に用いる括弧。例：補正値『+4』点、補正値『-2』点など</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 class="chapter" id="flow">3. ゲームの進行について</h2>
+<h3>シナリオ開始までの流れ（一覧）</h3>
+<h4>① 参加者の募集／確定</h4>
+<ul><li>最低2人、最大7人までの参加希望者を募る。</li><li>6人以下の人数の場合、GMがNPC陣営を追加して参戦することもある。</li></ul>
+<h4>② マスタースキル抽選</h4>
+<ul><li>参加者は己の分身となるマスターの一部スキルについて、抽選を行う必要がある。</li><li>抽選方法は各GMに委任するが、公平性が保たれるように留意する。</li><li>マスタースキル「土地管理」及び「現地在住」については後述の「サーヴァントクラス抽選会」「シナリオ開催地の公開」に影響するので注意する。</li><li>その他の詳細は「キャラクリエイト・マスター編」を参照する。</li></ul>
+<h4>③ 第一次／第二次サーヴァントクラス抽選会</h4>
+<ul><li>参加者は己の分身となるサーヴァントのクラスを抽選にて決定する。</li><li>抽選は2段階で行われ、開催地不明の状態で行う「第一次」と開催地が判明した状態で行う「第二次」が存在する。</li><li>「第一次」は希望クラスが通りやすく、「第二次」は後述する「知名度補正」を加味した英霊を召喚しやすいといったメリットがある。</li><li>参加者はGMに対し、「第一次」と「第二次」のどちらの抽選に参加するかを抽選開始前に宣言する。</li><li>基本的に、「第一次」の抽選が完了した段階でGMは開催地を決定するが、マスタースキル「土地管理」か「現地在住」保有者がいた場合、その参加者は「第一次」時点で開催地を決定する権利を有しており、開催地を把握した状態でクラス抽選に臨むことが可能である。</li><li>その他の詳細は「キャラクリエイト・共通編／サーヴァント編／マスター編」を参照。</li></ul>
+<h4>④ データ草案の作成</h4>
+<ul><li>参加者は「キャラクリエイト・共通編／サーヴァント編／マスター編」のルールに従い、サーヴァントとマスターのキャラクターシートを作成する。</li><li>提出された草案を元に、GMはバランス調整を行う。</li></ul>
+<h4>⑤ シナリオ開催地の公開</h4>
+<ul><li>参加者全員のデータがある程度固まってきたタイミングでGMは開催地を全体に向けてアナウンスする。</li></ul>
+<h4>⑥ 知名度を加味した、GMによるバランス調整</h4>
+<ul><li>開催地のアナウンス後、後述する「知名度補正」が発生する場合はそれを加味してデータ調整を行う。</li></ul>
+<h4>⑦ 聖杯戦争の開始宣言、各参加者の初期配置を決定</h4>
+<ul><li>すべてのデータ提出が完了したとき、GMは聖杯戦争の開始を参加者全員に向けて行う。</li><li>開始宣言と同時に各陣営はマスターとサーヴァントの立ち絵を公開する。</li><li>その後、聖杯戦争の開催地を7つに分割したエリアそれぞれに参加者を配置する。この時「土地管理」保有者は「霊地」に配置される。</li></ul>
+<h4>⑧ 0日目処理開始</h4>
+<ul><li>「土地管理」を保有するマスターはこのタイミングで自身のキャラシートを公開する。</li><li>参加者は各自、1日目（＝1シーン目）に滞在するエリアを宣言する。</li><li>発動タイミングが「シナリオ開始時」になっている能力を保有している場合、その宣言も行う。</li><li>0日目においては陣地作成等のクリンナップフェイズ中に発動する能力を使用することはできない。</li><li>「雇われ人」を保有するマスターとその雇い主は、他陣営に先んじて同盟チャットを開設することができる。</li></ul>
+<h4>⑨ 1日目の処理開始</h4>
+<ul><li>0日目の処理を終えると1日目(1シーン目)に入り、シナリオ開始となる。</li><li>シナリオ開始後は「シーン」「フェイズ」をシナリオ終了まで順に繰り返す。</li></ul>
+
+<h3>シナリオ開始後の流れ</h3>
+<p>シナリオは主に4つの「フェイズ」に区切って1シーン(1日)を進行していく。「フェイズ」は以下の4つ存在している。</p>
+<ol><li>1シーンの最初に行う「セットアップフェイズ」</li><li>戦闘やRPなどのアクションを行う「エンカウントフェイズ」</li><li>移動先に他参加者がいない場合に発生する「スタンバイフェイズ」</li><li>リソースの最終確認や情報収集等を行う「クリンナップフェイズ」</li></ol>
+<p>GMは参加者に対し各フェイズの開始と終了をアナウンスし、参加者はそれぞれのフェイズに応じた行動を実行する。4つのフェイズが終了したらシーンを移行して翌シーン(翌日)に入る。</p>
+
+<div class="diagram">
+<div class="dwrap-title">1シーン（1日）の流れ</div>
+<div class="dgrid">
+  <div class="dbox">セットアップ<br>フェイズ</div>
+  <div class="dconn">→</div>
+  <div class="dcol">
+    <div class="dbox sub">スタンバイフェイズ<br><span style="font-weight:normal">（移動先に他陣営なし）</span></div>
+    <div class="dbox sub">エンカウントフェイズ<br><span style="font-weight:normal">＜遭遇処理／戦闘処理＞<br>1R目 → 2R目 → …nR目</span></div>
+  </div>
+  <div class="dconn">→</div>
+  <div class="dbox">クリンナップ<br>フェイズ</div>
+</div>
+<p class="badge" style="margin-top:12px">※セットアップ後、移動先に他陣営がいれば「エンカウント」、いなければ「スタンバイ」に分岐。どちらを経ても最後はクリンナップで締める。</p>
+</div>
+
+<div class="diagram">
+<div class="dwrap-title">1シナリオ＜全戦争期間＞の流れ</div>
+<div class="dgrid">
+  <div class="dbox">1シーン<br>（1日目）</div><div class="dconn">→</div>
+  <div class="dbox">2シーン<br>（2日目）</div><div class="dconn">→</div>
+  <div class="dbox sub">……</div><div class="dconn">→</div>
+  <div class="dbox">nシーン<br>（n日目）</div>
+</div>
+<p class="badge" style="margin-top:12px">※各シーンはいずれも「セットアップ→（スタンバイ／エンカウント）→クリンナップ」の4フェイズで構成される。これを決着まで毎日繰り返す。</p>
+</div>
+
+<div class="diagram nest">
+<div class="dwrap-title">各フェイズの流れ</div>
+<div class="lv l0">シーンの開始</div>
+<div class="lv l0" style="margin-top:8px">Ⅰ：セットアップフェイズ（①→⑤）</div>
+<div class="lv l1">① セットアップ開始時に発動するスキル/宝具を確認</div>
+<div class="lv l1">② 前シーンのクリンナップで宣言したエリアへ移動</div>
+<div class="lv l1">③ 移動確認後、GMが遭遇発生エリアを全体アナウンス</div>
+<div class="lv l1">④ セットアップ終了時に発動するスキル/宝具を確認</div>
+<div class="lv l1">⑤ 遭遇発生→「エンカウント」へ／非遭遇→「スタンバイ」へ分岐</div>
+<div class="lv l0" style="margin-top:8px">Ⅱ-1：エンカウントフェイズ（①→④）</div>
+<div class="lv l2">① 遭遇エリア・陣営名・特記事項（陣地/霊地等）のアナウンス</div>
+<div class="lv l2">② 遭遇RPの開始</div>
+<div class="lv l2">③ 戦闘意思があれば戦闘処理へ移行</div>
+<div class="lv l2">④ 遭遇RP/戦闘終了でエンカウント終了処理</div>
+<div class="lv l0">Ⅱ-2：スタンバイフェイズ（①→②）※非遭遇時</div>
+<div class="lv l2">① 魂喰らい等、未遭遇時に行えるアクションを実行</div>
+<div class="lv l2">② 行動が無ければエンカウント終了まで待機</div>
+<div class="lv l0" style="margin-top:8px">Ⅲ：クリンナップフェイズ（①→⑤）</div>
+<div class="lv l3">① エンカウント終了/脱落/事件・異変のアナウンス</div>
+<div class="lv l3">② クリンナップ開始時スキル/宝具の宣言・処理</div>
+<div class="lv l3">③ 霊地・非戦闘時のFP自然回復処理（以降FP消費アクション不可）</div>
+<div class="lv l3">④ 翌シーンの移動先を宣言</div>
+<div class="lv l3">⑤ クリンナップ終了時スキル/宝具を確認</div>
+<div class="lv l0" style="margin-top:8px">シーンの終了</div>
+</div>
+
+<h3>ログの保管に関するルール</h3>
+<ul>
+<li>エンカウントフェイズが発生した際、GMはそのログを保管する義務がある。保管したログは「遭遇ログ」と呼称する。</li>
+<li>「遭遇ログ」にはRPと戦闘処理、遭遇時に使用したスキル/宝具のデータが含まれていなければならない。<br><span class="badge">※PL雑談の保管は任意とする。</span></li>
+<li>エンカウントフェイズに参加した陣営は各々が登場する「遭遇ログ」を自由に保管し、情報交換の材料にすることができる。</li>
+<li>クラススキル「単独行動」等のログ確保能力保有者は、自身が未参加の遭遇ログも入手可能。また情報交換などの交渉材料として自由に取り扱ってもよい。</li>
+<li>陣地や霊地等、エンカウントフェイズが発生したエリアにおける特記事項も遭遇ログに記録される。</li>
+<li>遭遇ログを保有する参加者は原則として入手したログを編集することはできない。</li>
+<li>GMは保存したログの誤字脱字を修正する等、限定的な編集を行うことが可能。ただし、過度にログを編集して特定陣営に有利な状況を作ることは厳禁とする。</li>
+</ul>
+<h3>☆オプションルール：日数制限</h3>
+<ul><li>聖杯戦争の盤面が停滞/硬直しているとGMが判断した際に追加するオプションルール。</li><li>戦争開始から「7」日以上経過しているタイミングで、GMが発令可能。</li><li>発令後、以下のルールをGMの判断で追加する。（任意選択）</li></ul>
+<p><b>① 位置公開：</b>遭遇発生アナウンスの際、全陣営がどのエリアにいるのかが全体公開される。</p>
+<p><b>② 強制終了：</b>シナリオ開始から「14日」経過して尚決着がつかない場合、「勝者無し」という形で強制的に決着をつけるルール。この場合、聖杯は顕現することなく、蓄積された魔力リソースは監督役(GM)が総取りする扱いとなる。</p>
+
+<h2 class="chapter" id="cc-common">4. キャラクリエイト・共通編</h2>
+
+<h3>英雄点と探索点</h3>
+<ul><li>キャラクリエイト時において各PCに与えられる基本リソース。</li><li>後述する能力値や探索技能への割り振り、スキル/宝具の習得リソースとして使用する。</li><li>初期配布される英雄点と探索点は以下の通り。</li></ul>
+<div class="tablewrap">
+<table>
+<thead><tr><th>リソース名</th><th class="center">マスター</th><th class="center">サーヴァント</th></tr></thead>
+<tbody>
+<tr><td>英雄点</td><td class="center">10点</td><td class="center">30点</td></tr>
+<tr><td>探索点</td><td class="center">15点</td><td class="center">18点</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>能力値（ステータス）</h3>
+<ul>
+<li>戦闘判定の基準値算出やリソースの計算に用いられる項目。</li>
+<li>「英雄点」をそれぞれのステータスに振り分けることで各ステータスの「ランク」を決定する（※①）。</li>
+<li>キャラクリエイト時、各ステータスには最低でも1点は振り分けねばならず、「0」にすることは原則不可。</li>
+<li>特定の「スキル/宝具」等の効果により一時的に「0以下」にすることも原則不可だが、GMがバランスを鑑みて許可した場合に限り、一時的に「0以下」にしてもよい。その場合ランク表記は一律「E-」となる。</li>
+<li>マスターの場合、各ステータスランクの上限は「C(5)」であり、それ以上にすることはできない。（※②）</li>
+<li>遭遇か、あるいはスキル等によりログを獲得したマスターは、エンカウントフェイズ開始時や獲得したログで目撃したサーヴァントのステータスを閲覧することができる。この時、閲覧できるのはステータスのランクのみであり、スキルや宝具等のデータは後述する「真名看破判定」等を行う必要がある。</li>
+</ul>
+<p class="badge">※①：英雄点を全ステータス均等に割り振った場合、マスターはオール「E+(2)」、サーヴァントはオール「C+(6)」となる</p>
+<p class="badge">※②：一部マスタースキルでその上限を変更することは可能。詳細はキャラクリエイト・マスター編参照</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>名称</th><th>概要</th><th>使用例</th></tr></thead>
+<tbody>
+<tr><td>筋力</td><td>物理的な攻撃力を表す能力。</td><td>バスター(B)判定、FP計算など</td></tr>
+<tr><td>耐久</td><td>肉体の強靭さを表す能力。</td><td>HP計算</td></tr>
+<tr><td>敏捷</td><td>身のこなしの速さを表す能力。</td><td>クイック(Q)判定、C値計算、先制/逃走/追跡判定など</td></tr>
+<tr><td>魔力</td><td>身に宿る魔力の総量を表す能力。</td><td>アーツ(A)判定、FP計算、終了フェイズ時におけるFPの回復量など</td></tr>
+<tr><td>幸運</td><td>自身の「運命力」を表す能力。</td><td>FP計算、C値計算、先制/逃走/追跡判定、奇襲防御判定など</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>ランク</h3>
+<ul><li>対応する能力に割り振られた英雄点によってE～EXまで表示される。尚、EXランクは1キャラにつき1つまでとする。</li><li>「A+(10)」以上のランクの必要英雄点は2点となり、端数については切捨て扱いとなる。</li></ul>
+<p class="badge">※英雄点を10点消費しても、ランクは「A+（10）」にはならず、「A（9）」のままとなる。</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th class="center">ランク</th><th class="center">実数値</th><th class="center">必要英雄点</th><th>RP目安</th></tr></thead>
+<tbody>
+<tr><td class="center">E-</td><td class="center">0</td><td class="center">※</td><td>特定の条件下でのみ到達できるランク。原則としてこのランクの能力のキャラは作成できない。</td></tr>
+<tr><td class="center">E</td><td class="center">1</td><td class="center">1点(合計1点)</td><td rowspan="2">平均的な人間の能力</td></tr>
+<tr><td class="center">E+</td><td class="center">2</td><td class="center">1点(合計2点)</td></tr>
+<tr><td class="center">D</td><td class="center">3</td><td class="center">1点(合計3点)</td><td rowspan="2">その分野において一流を名乗れるレベル</td></tr>
+<tr><td class="center">D+</td><td class="center">4</td><td class="center">1点(合計4点)</td></tr>
+<tr><td class="center">C</td><td class="center">5</td><td class="center">1点(合計5点)</td><td rowspan="2">人体の限界値。一流の人間が外的な補助を受けて到達できるレベル</td></tr>
+<tr><td class="center">C+</td><td class="center">6</td><td class="center">1点(合計6点)</td></tr>
+<tr><td class="center">B</td><td class="center">7</td><td class="center">1点(合計7点)</td><td rowspan="2">神秘の領域。信仰による補正を受けて到達するレベル</td></tr>
+<tr><td class="center">B+</td><td class="center">8</td><td class="center">1点(合計8点)</td></tr>
+<tr><td class="center">A</td><td class="center">9</td><td class="center">1点(合計9点)</td><td rowspan="3">神話の世界でも一握りの者しか到達しえないレベル</td></tr>
+<tr><td class="center">A+</td><td class="center">10</td><td class="center">2点(合計11点)</td></tr>
+<tr><td class="center">A++</td><td class="center">11</td><td class="center">2点(合計13点)</td></tr>
+<tr><td class="center">EX</td><td class="center">12</td><td class="center">2点(合計15点)</td><td>完全なる規格外。世界でも指折りの英雄しか辿り着けない領域。</td></tr>
+<tr><td class="center">EX+</td><td class="center">13以上</td><td class="center">--</td><td>特定条件下でのみ到達できる、超越者の領域</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>必須属性と強化属性</h3>
+<ul>
+<li>キャラクリエイトの際、サーヴァントとマスターはいくつかの属性を設定しなければならない。</li>
+<li>属性にはそのキャラクターのパーソナリティを表す「必須属性」と、追加英雄点を得られる「強化属性」の2種類がある。</li>
+<li>「必須属性」には「性別」「アライメント」「天/地/人/星」の3つが存在する。</li>
+<li>「強化属性」には以下の8つが存在し、1キャラクターにつき最大で3つまで取得することができる。</li>
+<li>「強化属性」は基本サーヴァントのみ取得可能で、マスターの場合はマスタースキル「強化人間」「人外種族」「霊基融合」いずれかの取得が必須となる。ただしマスター・サーヴァント問わず、相応の理由・設定・逸話が無ければGMが取得を却下することもあるので注意する。</li>
+<li>「必須属性」と「強化属性」はエンカウントフェイズ開始時に遭遇した陣営やログを獲得した陣営が閲覧するステータス表に記載し、公開しなければならない。</li>
+<li>各属性には対応する「特攻能力」が存在する（女性特攻、竜種特攻など）。この時、「必須属性」に対する「特攻能力」は「強化属性」に対する「特攻能力」より低めの倍率で設定される。</li>
+</ul>
+<h4>必須属性</h4>
+<div class="tablewrap">
+<table>
+<thead><tr><th>必須属性</th><th>概要</th></tr></thead>
+<tbody>
+<tr><td>性別</td><td>男性、女性、無性、性別不詳の4つから選択する。<br>※無性、性別不詳を選択した場合は英雄点を1点消費する必要がある。</td></tr>
+<tr><td>アライメント</td><td>周囲に対する立ち位置である「秩序・中立・混沌」と、当人の気質を表す「善・中庸・悪」の2項目によって決まる属性。<br>※バーサーカーの場合、例外的に「善・中庸・悪」に加えて「狂」というアライメントが追加されることもある。</td></tr>
+<tr><td>天/地/人/星</td><td>人類史においてどんな立ち位置にいたのかを表す属性。<br>天：神としての性質を持つ者。（カルナ、ギルガメッシュ等）<br>地：土着の伝承にて語られる人物。（アルトリア、フランケンシュタイン等）<br>人：史実の人物。現代に生きる人間も該当。（カエサル、織田信長など）<br>星：人類史の中で大きな希望を残した人物。（星の開拓者保有者など）</td></tr>
+</tbody>
+</table>
+</div>
+<h4>強化属性（8種・1キャラ最大3つまで）</h4>
+<div class="tablewrap">
+<table>
+<thead><tr><th>属性名</th><th class="center">追加英雄点</th><th>概要</th></tr></thead>
+<tbody>
+<tr><td>神性</td><td class="center">2</td><td>神に属する、あるいは神の血縁者としての側面を持つ英霊。（ヘラクレスなど）</td></tr>
+<tr><td>貴種</td><td class="center">1</td><td>王や皇帝等、カリスマ的な存在と称された英霊。（カエサルなど）</td></tr>
+<tr><td>魔性</td><td class="center">1</td><td>鬼や怪物などと呼ばれた逸話を持つ英霊。（アステリオスなど）</td></tr>
+<tr><td>竜種</td><td class="center">1</td><td>竜としての力を宿す英霊。（アルトリアなど）</td></tr>
+<tr><td>巨大</td><td class="center">1</td><td>巨人のように体躯が特別大きいとされる英霊（ダレイオスなど）</td></tr>
+<tr><td>獣性</td><td class="center">1</td><td>獣としての特性を持つ英霊。（アタランテなど）</td></tr>
+<tr><td>妖精</td><td class="center">1</td><td>伝承に伝わる妖精、あるいは精霊としての側面を持つ英霊（メリュジーヌなど）</td></tr>
+<tr><td>聖者</td><td class="center">1</td><td>宗教的に徳の高い逸話を持つ英霊に付与される。（ゲオルギウスなど）</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>戦型（スタイル）とHP／FP</h3>
+<p>マスターとサーヴァントはキャラクリエイトの際に「戦型(スタイル)」を選択し、その戦型に応じた「HP(ヒットポイント)」と「FP(フェイトポイント)」という2つのリソースを算出する。</p>
+<h4>① 戦型（スタイル）</h4>
+<div class="tablewrap">
+<table>
+<thead><tr><th>戦型名</th><th>キャラクター</th><th>HP計算式</th><th>FP計算式</th><th>概要</th></tr></thead>
+<tbody>
+<tr><td rowspan="2">ストロング</td><td>マスター</td><td>【耐久】×3+10</td><td>【筋力】+【魔力】+【幸運】</td><td>身体能力に優れたキャラクターが選択する戦型。</td></tr>
+<tr><td>サーヴァント</td><td>【耐久】×3+20</td><td>【筋力】+【魔力】+【幸運】</td><td>体力に優れる反面、魔力的リソースが少ない傾向がある。</td></tr>
+<tr><td rowspan="2">テクニック</td><td>マスター</td><td>【耐久】×3+6</td><td>【筋力】+【魔力】+【幸運】+2</td><td>魔力や技量に秀でたキャラクターが選択する戦型。</td></tr>
+<tr><td>サーヴァント</td><td>【耐久】×3+12</td><td>【筋力】+【魔力】+【幸運】+6</td><td>魔力的リソースが豊富な反面、耐久面にやや不安が残る。</td></tr>
+</tbody>
+</table>
+</div>
+<h4>② HP（ヒットポイント）</h4>
+<ul>
+<li>キャラクターが持つ体力的リソース。ダメージなどを受けることで減少する。</li>
+<li>このリソースが0以下になるとそのキャラクターは「気絶」状態へと移行し、さらにマイナス分がそのキャラクターの「【耐久】×2」を超えるとそのキャラクターは「死亡/消滅」する。</li>
+<li>「気絶」状態のキャラクターは行動不能となり、戦闘中であれば直前まで配置されていたフィールド(前衛/後衛)の中で放置される。また、戦闘中に「気絶」状態のキャラクターがHP1以上になった場合、次のラウンドから行動を再開できる。</li>
+<li>「気絶」状態のキャラクターに対し、手番を消費して「止めを刺す」と他のキャラクターが宣言した場合、その宣言の対象となったキャラクターは「死亡/消滅」する。また、クリンナップフェイズが終了するまでの間にHP1以上にならないことが確定したキャラクターも、戦闘終了後「死亡/消滅」する。（※①、※②）</li>
+</ul>
+<p class="badge">※①：エンカウントフェイズの段階でHP回復の見込みがないとGMが判断した場合、「死亡/消滅」処理を前倒しすることもある(任意)。</p>
+<p class="badge">※②：スキル等の効果でHP0以下のまま行動しているキャラクターが聖杯戦争の勝者となった場合、「死亡/消滅」処理の前に聖杯を獲得する。</p>
+<h4>③ FP（フェイトポイント）</h4>
+<ul>
+<li>キャラクターが持つ魔力的リソース。スキル/宝具等のコストとして使用することができる。</li>
+<li>このリソースは0になっても特にペナルティを負うことはないが、いかなる手段であってもこのリソースが0未満になるような行動をすることは出来ない。</li>
+<li>このリソースは戦闘が発生していないシーンのクリンナップフェイズ時に「【魔力】/2(切上げ)」点回復する。</li>
+</ul>
+<p>FPを消費する行動には、全キャラクター共通で行える「汎用アクション」が存在する。</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th>汎用アクション</th><th>コスト</th><th>効果</th></tr></thead>
+<tbody>
+<tr><td>ブースト</td><td>FP1点 or HP2点</td><td>・この効果は戦闘判定の直前に宣言する。<br>・任意の戦闘判定の補正値『+2』<br>・汎用アクション「振り直し」との併用は不可</td></tr>
+<tr><td>振り直し</td><td>FP「その判定での使用回数」点<br>※1回目＝1点、2回目＝2点</td><td>・この効果は戦闘/探索判定の直後に宣言する。<br>・直前に行った戦闘/探索判定ダイスを振り直す<br>・この効果は1つの判定につき2回まで使用できる。<br>・汎用アクション「ブースト」との併用は不可</td></tr>
+<tr><td>スキルレジスト</td><td>エンカウントフェイズ中：3点<br>クリンナップフェイズ中：1点</td><td>・自身に付与されたスキル効果を1つ選択し、無効化する。<br>・この効果は戦闘中の場合、任意のタイミングで実行可能。<br>※自身の判定に影響するスキルを無効化する場合、その判定を行う前にレジストを宣言しなければならない。</td></tr>
+<tr><td>宝具レジスト</td><td>クリンナップフェイズ中：3点</td><td>・自身に付与された宝具効果を1つ選択し、無効化する。</td></tr>
+<tr><td>配置転換</td><td>1点</td><td>・戦闘中、自身の手番開始時に自身の配置（前衛・後衛）を変更する。<br>・このアクションは自陣営の手番中最速のタイミングでしか実行できない。<br>※同盟を含め自陣営の誰かが既に行動済みの場合、このアクションは実行不可<br>・このアクションは1戦闘に1回しか実行できない。</td></tr>
+</tbody>
+</table>
+</div>
+<h4>☆追加HP／追加FP</h4>
+<ul>
+<li>「防御障壁」や「霊基拡張」等、一部の宝具効果によって戦闘中自身のHP/FPに上乗せされる外付けリソース。</li>
+<li>このリソースは原則としてスキル効果によって付与されることはない。</li>
+<li>追加HP/追加FPを獲得した際、ダメージやスキル/宝具の使用等によるリソースの減少/消費は追加HP/FPから優先して行う。</li>
+<li>複数の宝具によって追加HP/追加FPを獲得した場合、リソースを合算するのではなく獲得した宝具ごとに個別で管理する。（例：追加HPα、追加HPβなど）</li>
+<li>追加HP/FPはいかなる回復手段を以てしても回復することはできず、戦闘終了後に消滅する。</li>
+</ul>
+
+<h3>探索技能</h3>
+<ul><li>探索判定の成功率算出に用いる項目。</li><li>「探索点」を「肉体」「知覚」「教養」という3つの探索技能に振り分ける。</li><li>各技能最低1点以上の探索点を振り分けなければならず、原則として「0」以下にすることは出来ない。</li><li>一つの技能に対しサーヴァントは最大9点、マスターは最大で8点まで振ることができる。</li></ul>
+
+<h3>スキル／宝具について</h3>
+<ul>
+<li>FPを消費して発動するそのキャラクター固有のアクション。消費するFPは効果内容によって決まる。</li>
+<li>基本的にはルールにあるサンプルデータをベースに作成する。</li>
+<li>オリジナル効果を作成することも可能だが、オリジナル効果はGMの監修が必須であり、また「キャラクターの初期英雄点を増やす効果」は原則作成できないものとする。（※①）</li>
+<li>戦闘中、同じスキル/宝具を同じタイミングで複数回発動させ、その効果を累積させることは出来ない。</li>
+<li>戦闘中、発動タイミングが同じスキルを同時に使用することは出来ない。また、発動タイミングが異なるスキルであっても、実質的な効果の適用タイミングが重複するのであればGM判断で却下する可能性もあるので注意する。</li>
+<li>発動タイミングが戦闘を含むエンカウントフェイズ中以外のスキルは例外的に複数同時に発動することができる。</li>
+<li>「宝具+スキル」や「宝具+宝具」等の組み合わせは同じ発動タイミングでも発動可能とする。</li>
+<li>基本的に「スキル＜宝具」であり、宝具より強力なスキルは作成できない。</li>
+<li>効果内容が競合した場合、スキル同士や宝具同士であるなら効果を打ち消し合い、スキルと宝具であるなら宝具有利に処理する。その他詳細な判断は適宜GMが判断する。</li>
+<li>前衛から後衛、後衛から前衛などキャラクターの配置を超えてアイテム、スキル/宝具を使用する場合、効果テキスト内に「この効果は後衛から前衛、前衛から後衛へ使用可能」といった文言が必要となる。（※②）</li>
+</ul>
+<p class="badge">※①：既にサンプルとして用意されているものは除く</p>
+<p class="badge">※②：前衛/後衛については「フィールドと前衛/後衛」に記載</p>
+
+<div class="diagram nest">
+<div class="dwrap-title">スキル/宝具の発動タイミング（入れ子構造）</div>
+<div class="lv l0">キャラクター作成時</div>
+<div class="lv l0">シナリオ開始時</div>
+<div class="lv l1">シーン開始</div>
+<div class="lv l2">セットアップフェイズ開始時</div>
+<div class="lv l3">エリア移動時</div>
+<div class="lv l2">セットアップフェイズ終了時</div>
+<div class="lv l2">エンカウント/スタンバイフェイズ開始時</div>
+<div class="lv l3">戦闘開始時</div>
+<div class="lv l4">先制判定時</div>
+<div class="lv l4">ラウンド開始時</div>
+<div class="lv l4" style="border-left-color:#a33">　手番開始時</div>
+<div class="lv l4" style="border-left-color:#a33;margin-left:14px">　1. 自身/対象の〇判定時</div>
+<div class="lv l4" style="border-left-color:#a33;margin-left:14px">　2. 与ダメージ計算時</div>
+<div class="lv l4" style="border-left-color:#a33;margin-left:14px">　3. 被ダメージ計算時</div>
+<div class="lv l4" style="border-left-color:#a33">　手番終了時</div>
+<div class="lv l4">ラウンド終了時</div>
+<div class="lv l3">戦闘終了時</div>
+<div class="lv l2">エンカウント/スタンバイフェイズ終了時</div>
+<div class="lv l2">クリンナップフェイズ開始時</div>
+<div class="lv l2">クリンナップフェイズ終了時</div>
+<div class="lv l1">シーン終了時</div>
+<div class="lv l0">シナリオ終了時</div>
+<p class="badge" style="margin-top:12px">※左の色帯と字下げが「入れ子の深さ」を表す。外側ほど大きな時間単位（シナリオ→シーン→フェイズ→戦闘→ラウンド→手番）。これら全タイミングは「任意」発動の対象にもなり得る。</p>
+</div>
+
+<h4>効果時間</h4>
+<p>原則として、スキル/宝具の効果時間は「判定時」のもの以外効果テキストに明記する必要がある。効果時間には大きく分けて以下の5つがあり、それ以外についてはGMと適宜協議する。</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th>効果時間</th><th>概要</th></tr></thead>
+<tbody>
+<tr><td>判定時</td><td>・スキル/宝具の使用を宣言した直後の判定や行動に効果が適用され、適用後すぐに効果が消失する。<br>・主に発動タイミングが「〇判定時」となっているものがこれに該当する。</td></tr>
+<tr><td>ラウンド中</td><td>・スキル/宝具の使用を宣言した直後から、宣言したラウンドの終了まで効果が持続する。<br>・主に「ラウンド開始時」に発動するスキル/宝具が該当する。</td></tr>
+<tr><td>戦闘中</td><td>・スキル/宝具の使用を宣言した直後から、その戦闘が終了するまで効果が持続する。<br>・主に効果が累積するものや発動の際に「対抗ロール」を要求するスキル/宝具が該当する。</td></tr>
+<tr><td>永続</td><td>・スキル/宝具の使用を宣言した直後から対象がレジスト等の特定条件を満たすまでずっと効果が持続する。<br>・効果テキスト中に「永続」の文言と「解除条件」が記載されているスキル/宝具が該当する。</td></tr>
+<tr><td>常時</td><td>・一部のクラススキルやクラス特性など、キャラクリエイト時点から効果を発揮し、シナリオ中持続する。<br>・クラススキル「騎乗」や「狂化」等がこれに該当する。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>スキル／宝具のタイプ</h4>
+<p>スキル並びに宝具には以下のタイプが存在する。また、複数タイプが融合したスキルも存在する。</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th>タイプ</th><th>取得制限</th><th>概要</th></tr></thead>
+<tbody>
+<tr><td>補正値変動系</td><td>キャラ1体につき、スキルで2個、宝具で1個まで取得可能。<br>※攻撃判定/防御判定に影響するスキルは1個のみ。<br>※この制限はクラス特性/クラススキルには適用されない</td><td>①対象の補正値を変動させる能力。②原則として判定前に使用する。③1つの判定につき変動域はスキルの場合『±4』以内、宝具の場合『±8』～『±20』の間で調整を行う。④1回の発動で複数回恩恵を受ける効果である場合、合計変動域は半分かそれ以下となる。⑤特殊条件での発動する能力の場合、GMの判断で変動域をさらに拡張することも可能。⑥原則として複数のスキル同士の補正値は累積しない。ただし、専用の記載がある場合や「スキル+宝具」の場合は累積する。</td></tr>
+<tr><td>ダイス変動系</td><td>キャラ1体につきスキルで1個、宝具で1個まで取得可能。<br>※この制限はクラス特性/クラススキルには適用されない</td><td>①対象のダイスやクリティカル値に影響を及ぼす能力。②「出目の固定」「出目の反転」「クリティカル値の変動」等が該当。③原則としてスキルの発動は判定の前だが、出目を反転させる能力については判定の後に発動可能。これは該当するスキル/宝具の効果内容を見てGMが判断する。</td></tr>
+<tr><td>能力値変動系</td><td>キャラ1体につきスキルで1個、宝具で1個まで取得可能。<br>※この制限はクラス特性/クラススキルには適用されない</td><td>①対象の能力値(ステータス)の「ランク」を変動させる能力。②「ステータスランクの上昇/下降」「ステータスランクの振り分け」等が該当。③1つのステータスにつき変動域はスキルの場合『±2』、宝具の場合『±4』～『±8』の間で調整する。④この効果により対象の能力ランクをE-(0)以下に変動させることは原則不可とする。⑤この効果による能力値の変動によって戦闘中のHP/現在FPが増減することはない。</td></tr>
+<tr><td>特殊攻撃系</td><td>キャラ1体につきスキル1個まで取得可能。<br>※このタイプの宝具は作成できない。<br>※クラス特性/クラススキルにもこの制限は適用される。</td><td>①自身の攻撃判定以外の追加効果を上乗せする能力。②原則として自身の攻撃判定時に使用し、対象のHPに対し1点以上のダメージを与えることで発動する。※攻撃補正値系のスキルとの併用は不可。宝具は可能。※追加HPには含まない。③1回の発動につき発生する効果量は補正値換算で『±2』を目安として調整する。</td></tr>
+<tr><td>情報探索系</td><td>特になし<br>※1キャラにつき3つ以上取得するのは非推奨</td><td>①戦闘以外の場面で対象の情報獲得や自身の情報隠蔽の際に発動する効果。②「遭遇ログの獲得」「キャラシートの獲得」「自身のデータの隠蔽」等が該当。</td></tr>
+<tr><td>FP回復系</td><td>①キャラ1体につき1個まで取得可能。<br>※スキル/宝具を問わず、クラス特性/クラススキルにもこの制限は適用される。</td><td>①対象のFPを回復させる能力。②この効果をクラススキルで習得している場合、そのキャラクターは追加で習得することはできない。</td></tr>
+<tr><td>HP回復系</td><td>①陣営1つにつき1個まで取得可能。<br>※スキル/宝具を問わず、クラス特性/クラススキルにもこの制限は適用される。</td><td>①対象のHPを回復させる能力。②この効果をクラススキルで習得している場合、そのキャラクターは追加で習得することはできない。</td></tr>
+<tr><td>独自系</td><td>GM判断に基づく</td><td>①上記のいずれにも分類されない特殊な能力。②このタイプのスキルは特に個数制限はないが、GMは全体のバランスを見て調整を行う必要がある。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>オブジェクト</h3>
+<ul><li>陣地や工房など、特定のスキル/宝具などによって作成され、エリアに設置されるキャラクター以外の存在。</li><li>共通項目として「Lv.」があり、「Lv.」によってHP/FPが計算される。尚、HP/FPの計算式やLv.アップの条件などはオブジェクトごとに異なる。</li><li>オブジェクトは戦闘中「前衛」に強制配置され、敵対陣営は攻撃対象としてこのオブジェクトを選択できる。</li><li>オブジェクトは判定を行うことは出来ず、また攻撃/防御基準値を持たない。</li></ul>
+<p>オブジェクトは以下の手段で破棄/破壊される。</p>
+<div class="tablewrap">
+<table><tbody>
+<tr><td class="center">①</td><td>クリンナップフェイズ終了時、作成者が破棄を宣言する。</td></tr>
+<tr><td class="center">②</td><td>エンカウントフェイズにおける戦闘の際に、攻撃を受けてHP0以下になる。</td></tr>
+<tr><td class="center">③</td><td>作成者が設置したエリアから離れている間に他の陣営が設置したエリアに移動してきた時、そのエリアにいるオブジェクト作成者以外の陣営全員が破壊に合意する。この時、オブジェクトの残りHPは問わない。</td></tr>
+</tbody></table>
+</div>
+<ul><li>①や②等によってオブジェクトが破棄/破壊された場合、オブジェクトを再設置できるのは次シーン以降となる。</li><li>③などの作成者の意志に関係なくオブジェクトが破壊された場合、翌シーンのセットアップフェイズ開始時に破壊されたことを把握できる。</li><li>オブジェクトは単一陣営によるものであれば1エリアに複数設置可能（※①）。</li><li>複数陣営が単一のエリアにオブジェクトを設置することは出来ない。ただし、エリア結合等で既に作成したオブジェクト同士が意図せず1つのエリアに設置される形になった場合は例外的に複数陣営のオブジェクトが共存することがある。（※②）</li></ul>
+<p class="badge">※①：マスターの工房とサーヴァントの陣地など</p>
+<p class="badge">※②：エリア結合の後、既にオブジェクトが設置されていたエリアに対し新たなオブジェクトを設置することは出来ない。</p>
+
+<h2 class="chapter" id="cc-servant">5. キャラクリエイト・サーヴァント編</h2>
+
+<h3>クラスの抽選</h3>
+<ul><li>マスタースキルの抽選が終わったタイミングでサーヴァントのクラスの抽選を行う。</li><li>クラスの抽選は「第一次」と「第二次」の二段階に分けて実行される。</li><li>「第一次」は己の希望するクラスを通しやすい代わりに、サーヴァントのデータが完成するまで開催地を知ることができない。</li><li>「第二次」は希望クラスが通しにくい代わりに、GMから開催地を通知された状態でサーヴァントを構築できる。</li><li>参加者はそれぞれどちらの抽選を行うかGMに対し個別に宣言し、各々希望するクラスを3つ以上GMに提出する。</li><li>参加者の希望クラスの提出が完了した段階でGMはクラスの抽選処理を行い、参加者が作成する英霊のクラスをそれぞれに通知する。</li></ul>
+<h3>真名の決定</h3>
+<ul><li>クラスが決まったタイミングで参加者はそのクラスに当てはまる英雄をピックアップする。</li><li>英雄以外に、高名な妖怪や怪物なども召喚することが可能。</li><li>神霊は原則召喚することはできないが、エクストラクラス「アルターエゴ」を選択した場合のみ、その神霊の「一側面」を抽出するという形で例外的に召喚することが可能。また、GMが許可した場合に限り、「アルターエゴ」のクラスはその英霊の「IF」の姿を召喚することもできる。</li><li>エクストラクラス「フォーリナー」は、地球外での活動を主とする存在（ボイジャー等）を召喚可能とするほか、特定の英霊をクトゥルフ神話系の神格を融合させた姿で召喚することも可能。ただしこのクラスで神格そのものを召喚することは出来ない。</li><li>その他、召喚可能な存在の範囲についてはGMが適宜裁定する。</li></ul>
+<h3>知名度補正</h3>
+<ul><li>開催地によってはサーヴァントが追加で英雄点を獲得することがある。</li><li>クラスの抽選時に「第一次」を選択した参加者は、サーヴァントデータの草案が完成するまで開催地を知ることができない。</li><li>クラスの抽選時に「第二次」を選択した参加者は、知名度補正を加味したデータを構築することができる。</li><li>土着の英雄の場合は英雄点「+2」、近隣国の場合は英雄点「+1」、それ以外は「0」とする。この判断はGMが行う。</li><li>開催地については基本的にGMが決定するが、マスタースキル「土地管理」、「現地在住」を選択したプレイヤーが開催地を選択することもある。</li></ul>
+
+<h3>サーヴァントのクラス</h3>
+<ul><li>サーヴァントには基本クラス7つとエクストラクラス5つの合計12クラスが存在する。</li><li>「三騎士」に分類されるクラスは固定で、エクストラクラスは「四騎士」に分類されるクラスの中から1枠だけ入れ替わる形で参戦可能となる。</li><li>各クラスごとに「特性」と「追加英雄点」、「必須クラススキル」が設定されており、該当するキャラクターはそれらを遵守しなければならない。</li></ul>
+<p class="badge">※通常聖杯戦争において、ルーラーはGM限定のクラスとなる。</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th>分類</th><th>クラス名</th><th class="center">略称</th><th>概要</th></tr></thead>
+<tbody>
+<tr><td rowspan="3">三騎士</td><td>セイバー</td><td class="center">剣</td><td>主に剣にまつわる逸話を持つ英霊が当てはまるクラス</td></tr>
+<tr><td>ランサー</td><td class="center">槍</td><td>主に槍にまつわる逸話を持つ英霊が当てはまるクラス</td></tr>
+<tr><td>アーチャー</td><td class="center">弓</td><td>武装を問わず、遠距離攻撃を主に扱うクラス</td></tr>
+<tr><td rowspan="4">四騎士</td><td>ライダー</td><td class="center">騎</td><td>何かしらに騎乗した逸話を保有している者が当てはまるクラス。</td></tr>
+<tr><td>キャスター</td><td class="center">術</td><td>魔術や芸術、物作りに長じた者が当てはまるクラス。</td></tr>
+<tr><td>アサシン</td><td class="center">殺</td><td>暗殺、殺人など「殺すこと」に特化した者が当てはまるクラス。</td></tr>
+<tr><td>バーサーカー</td><td class="center">狂</td><td>理性を失った逸話を持つ者が当てはまるクラス。</td></tr>
+<tr><td rowspan="5">エクストラ</td><td>シールダー</td><td class="center">盾</td><td>盾や守護に関連する逸話を持つ者が当てはまるクラス</td></tr>
+<tr><td>アヴェンジャー</td><td class="center">讐</td><td>復讐にまつわる逸話を持つ者が当てはまるクラス</td></tr>
+<tr><td>アルターエゴ</td><td class="center">分</td><td>通常召喚出来ないとされる存在を、力の断片を抽出した一側面という形で召喚するために用意されたクラス。神霊等の強力な存在や、伝承に無いその英霊の「IF」の姿等を召喚することもできる。</td></tr>
+<tr><td>フォーリナー</td><td class="center">降</td><td>地球という星の理の外に生きる存在を召喚するために用意されたクラス。主な活動域が宇宙であるモノ、邪神の力を宿すモノが当てはまる。尚、本システムにおいて邪神の霊基を保有するモノは強化属性「神性」とクラススキル「狂気(邪神)」の習得が必須となる。</td></tr>
+<tr><td>ルーラー</td><td class="center">裁</td><td>聖人あるいは国を統治するモノが当てはまるクラス。前提としてこのクラスに当てはまる英霊は「聖杯に願いを抱かない」という縛りが存在する。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>各クラスの特性・追加英雄点・必須クラススキル</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th>クラス</th><th>特性</th><th class="center">追加英雄点</th><th>必須クラススキル</th><th class="center">実質初期英雄点</th></tr></thead>
+<tbody>
+<tr><td>セイバー</td><td>最優</td><td class="center">+6点</td><td>対魔力</td><td class="center">30+6-1=35</td></tr>
+<tr><td>ランサー</td><td>長柄</td><td class="center">+4点</td><td>対魔力</td><td class="center">30+4-1=33</td></tr>
+<tr><td>アーチャー</td><td>射撃</td><td class="center">+4点</td><td>単独行動</td><td class="center">30+4-1=33</td></tr>
+<tr><td>ライダー</td><td>連装</td><td class="center">+3点</td><td>騎乗</td><td class="center">30+3-1=32</td></tr>
+<tr><td>キャスター</td><td>創造</td><td class="center">+3点</td><td>陣地作成</td><td class="center">30+3-1=32</td></tr>
+<tr><td>アサシン</td><td>暗殺</td><td class="center">+3点</td><td>気配遮断</td><td class="center">30+3-1=32</td></tr>
+<tr><td>バーサーカー</td><td>頑強</td><td class="center">+2点</td><td>狂化Lv.1～Lv.3</td><td class="center">35～41</td></tr>
+<tr><td>シールダー</td><td>守護</td><td class="center">+4点</td><td>対魔力</td><td class="center">30+4-1=33</td></tr>
+<tr><td>アヴェンジャー</td><td>逆境</td><td class="center">+2点</td><td>忘却補正、自己回復(魔力)</td><td class="center">30+2-2=30</td></tr>
+<tr><td>アルターエゴ</td><td>分霊</td><td class="center">+3点</td><td>なし</td><td class="center">30+3+0=33</td></tr>
+<tr><td>フォーリナー</td><td>星航</td><td class="center">+0点</td><td>領域外の生命</td><td class="center">30</td></tr>
+<tr><td>ルーラー※</td><td>審判</td><td class="center">+6点</td><td>対魔力、真名看破、神明裁決</td><td class="center">30+6-1=35</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>特性</h3>
+<ul><li>各クラスに割り当てられた、後述する「クラススキル」とは異なる、そのクラス特有の常時発動能力。</li><li>以下の表に記載された効果を獲得し、以降如何なる手段をもってしても他のクラスの特性を獲得することはできない。</li><li>「特性」はプラス効果/マイナス効果問わず原則として強制発動する。</li></ul>
+<div class="tablewrap">
+<table>
+<thead><tr><th>特性</th><th>効果</th></tr></thead>
+<tbody>
+<tr><td>最優</td><td>適性「可」のクラススキルを2つまで習得可能。※しなくてもよい</td></tr>
+<tr><td>長柄</td><td>先制・追跡判定補正値『+2』</td></tr>
+<tr><td>射撃</td><td>先制判定の基準値を【耐久】を除く【指定能力】に変更する。※キャラクリ時に指定</td></tr>
+<tr><td>連装</td><td>追加宝具取得時のコストが英雄点「3」から「2」になる。＆キャラ作成時に自身の宝具を1つ選択し、発動時の消費FP「-1」。（下限4）<br>※対象宝具名に「連装」の記載を追記する。<br>※効果量が消費FPに依存する宝具の場合、「-1」する前の消費FPで効果を算出する。</td></tr>
+<tr><td>創造</td><td>「道具作成」の制限「シナリオ3回」から「シナリオ4回」に変更する。＆「陣地作成」による陣地のHP/FPの数値を「Lv.×3」から「Lv.×5」に変更する。</td></tr>
+<tr><td>暗殺</td><td>1シーン1回、自身の手番中に「EX攻撃」を実行可能。</td></tr>
+<tr><td>頑強</td><td>初期HP+6</td></tr>
+<tr><td>守護</td><td>自身の防御援護対象が受けるダメージを「任意点」肩代わり可能。※0点も可</td></tr>
+<tr><td>逆境</td><td>自身の全攻撃判定+『経過ラウンド』(上限+3)　＆自身の全防御判定-『経過ラウンド/2』（下限-2）<br>※1R目は補正値±0で、2R目から「1R経過」したものとして補正値を計算する。</td></tr>
+<tr><td>分霊</td><td>習得可能なクラススキルの数を「3つ」から「2つ」に変更する。</td></tr>
+<tr><td>星航</td><td>自身に付与されたマイナス効果スキルを解除(レジスト)する際の消費FP「-2」(下限1)。</td></tr>
+<tr><td>審判</td><td>全マスター/サーヴァントのキャラクターシートを無条件で獲得する。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>クラススキル</h3>
+<ul><li>各サーヴァントは最低1つ、最大3つまでの「クラススキル」を獲得できる。</li><li>常時発動効果の「クラススキル」はプラス効果/マイナス効果問わず原則として強制発動する。</li><li>以下の表に記載されているコスト（英雄点）を消費することで他のクラスのクラススキルを習得することも可能。ただし適性が「可」のスキルはセイバー以外原則1つまでとする。</li></ul>
+<div class="tablewrap">
+<table>
+<thead><tr><th>スキル</th><th>適性／コスト</th><th>効果</th></tr></thead>
+<tbody>
+<tr><td>対魔力</td><td>有：剣槍弓騎盾分裁／可：降(2)／不可：術殺狂讐</td><td>タイプ：補正値変動系／発動：常時／制限：なし<br>効果：・自身の【魔力】を用いる受動判定補正値『+2』・この効果は他の補正値変動系スキルと重複しない。</td></tr>
+<tr><td>騎乗</td><td>有：剣槍弓盾騎分降／可：殺讐(2)／不可：術狂裁</td><td>タイプ：補正値変動系＆独自系／発動：①常時/②エリア移動時／制限：なし<br>効果：①自身の先制/逃走/追跡判定補正値『+2』。この効果は他の補正値変動系スキルと重複する。②2つ先のエリアまで移動可能。これは同盟締結中も有効とする。</td></tr>
+<tr><td>単独行動</td><td>有：弓殺分降／可：剣槍騎術讐(2)／不可：狂盾裁</td><td>タイプ：情報探索系／発動：①エンカウント開始時/②クリンナップ開始時／制限：①②共に1シーン1回ずつ<br>効果：①マスターを登場させることなくサーヴァントのみでエンカウントを開始できる。この効果使用中、マスターは令呪以外のアクション不可（念話としてRP参加は可）。②自陣営が未遭遇の時、隣接エリアで発生していた遭遇ログを1つ選択し獲得。2つ先まで移動可能なスキルを同盟含む味方が持つ場合、2つ先のログも確保可（獲得は1つだけ）。</td></tr>
+<tr><td>陣地作成</td><td>有：術盾分／可：剣槍弓騎殺降(2)／不可：狂讐裁</td><td>タイプ：独自系／発動：クリンナップ開始時／制限：破棄/破壊まで再設置不可、1エリア1つまで<br>効果：・自身が滞在するエリアにオブジェクト「陣地Lv.1」を設置。・設置シーン以降、クリンナップ開始時に「陣地Lv.」+1（上限Lv.7）。不在でも発動。・陣地は「Lv.×3」点のHP/FPを保有。Lv.上昇に伴い現在値・最大値の両方が上昇。最大値到達時はクリンナップ開始時に「Lv.」点回復。・同陣営(同盟含む)は任意のタイミングで陣地のFPを使用可。・侵入/ログ確保した陣営はそこが陣地と把握。・設置者は侵入陣営名を把握(不在時も該当シーンのクリンナップ開始時に通知)。</td></tr>
+<tr><td>道具作成</td><td>有：術分／可：剣槍弓騎殺讐降(2)／不可：狂盾裁</td><td>タイプ：補正値変動系／発動：クリンナップ開始時／制限：1シーン1回、シナリオ3回<br>効果：・同盟含む味方陣営1体の任意判定一つに補正値『+2』(他の補正値変動系と重複)。・使用者消滅まで永続。・1判定1回、1キャラに最大3回まで(複数の道具作成保有者が同一対象に付与した場合も合算上限3)。<br>※任意判定には○攻撃/○防御/先制/逃走/追跡や、スキル/宝具による特殊判定も含む（特殊判定は別種扱い）。※BQA攻撃のいずれかとEX攻撃を強化した場合、補正値は累積されず1回分のみ適用。</td></tr>
+<tr><td>気配遮断</td><td>有：殺分／可：剣槍弓術讐降(3)／不可：騎狂盾裁</td><td>タイプ：補正値変動系／発動：先制/逃走判定時／制限：1シーン1回／効果：補正値『+6』</td></tr>
+<tr><td>狂化</td><td>有：狂分(0)／可：剣槍讐(2)／不可：弓騎殺術盾降裁</td><td>タイプ：独自系＆補正値変動系／発動：①作成時/②常時/③クリンナップ開始時／制限：Lv.3以上は会話不可、Lv.3以上はアライメントを「〇〇・狂」に強制変更、狂以外のクラスは上限Lv.1<br>効果：①-1 作成時に狂化Lv.を1～3で指定。①-2 作成時の英雄点+「Lv.×3」点(上限突破不可)。②全防御判定補正値『-「Lv.-1」』点(他の補正値系と重複)。③マスターのFPを「Lv.」点消費(尽きたらマスターHPで代用)。</td></tr>
+<tr><td>忘却補正</td><td>有：讐／不可：他全クラス</td><td>タイプ：補正値変動系／発動：常時／制限：なし<br>効果：・〔〇〕攻撃判定の補正値『+(最大HP-現在HP)/5(切上げ)』点(上限+3)。他の補正値系と重複。</td></tr>
+<tr><td>自己回復(魔力)</td><td>有：讐／不可：他全クラス</td><td>タイプ：FP回復系／発動：被ダメージ計算時／制限：なし<br>効果：・自身のHPへのダメージ確定後、「被ダメージ/5(切上げ)」点のFPを即時回復(1回の被ダメにつき上限3点)。・追加HPへのダメージには適用されない。</td></tr>
+<tr><td>領域外の生命</td><td>有：降(0)／不可：他全クラス</td><td>タイプ：独自系／発動：宝具相殺時／制限：なし<br>効果：・宝具相殺の消費FP「-2」・相殺の際、自身の宝具データを開示しなくてもよい。※その他の制限は「宝具相殺」のルールに準拠。</td></tr>
+<tr><td>狂気(邪神)</td><td>有：降(0)／不可：他全クラス</td><td>タイプ：補正値変動系／発動：エンカウント開始時、強制発動／制限：強化属性「神性(邪神由来)」を保有<br>効果：・エンカウント中、自身を除く全キャラの〔【指定能力】〕を用いる判定に補正値『-1』(他の補正値系と重複)。・同盟含む味方陣営も対象に含む。</td></tr>
+<tr><td>真名看破（GM用）</td><td>有：裁(0)／不可：他全クラス</td><td>タイプ：補正値変動系／発動：常時／制限：GM限定<br>効果：・真名を保有しているサーヴァントに対する全判定補正値『+2』(他の補正値系と重複)。</td></tr>
+<tr><td>神明裁決（GM用）</td><td>有：裁(0)／不可：他全クラス</td><td>タイプ：独自系／発動：常時／制限：GM限定<br>効果：・各陣営に対し使用できる令呪を2画ずつ保有(最大14画)。通常の令呪同様に扱える。・1陣営に対し1画まで譲渡可。・自身に対しては使用不可。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>固有スキルについて</h3>
+<ul>
+<li>各サーヴァントはそれぞれ自身を象徴する独自のスキルを2つ保有している。</li>
+<li>クラススキルと同一のスキルを再現することは原則禁止とする。</li>
+<li>宝具より強力なものは作成できないが、使用範囲を制限することで同等に近い効果のスキルをデザインすることは可能。</li>
+<li>英雄点1点を消費するごとに固有スキルを1つ、最大で2つまで追加することができる。</li>
+<li>以下、サンプルスキルを例示する。これらをベースにオリジナルのスキルへ改造してもよい。</li>
+</ul>
+<p class="badge">※名前を変えることは改造に含まない。</p>
+<p class="badge">※攻撃判定を防御判定に変更する等、例示されている判定を切り替えることは改造に含む。尚、スキルのテキストにて選択式になっている場合は例外とする。</p>
+
+<h4>■ 補正値変動系</h4>
+
+<div class="skill"><div class="hd">魔力放出</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>補正値『+4』</div>
+<div class="row"><span class="lbl">改造</span>「属性特効」：ベースとなる補正値を『-1』し、条件を満たすことで追加の補正値を獲得する。（上限+7）特攻対象となる属性は最大で2つまで選択可能。ただし、必須属性と強化属性を織り交ぜた特攻を持つことは出来ない。<br>＜必須属性特攻＞1属性を指定＝1属性につき『+3』（合計+6）、2属性を指定＝1属性につき『+2』（合計+5～+6）<br>＜強化属性特効＞1属性を指定＝1属性につき『+4』（合計+7）、2属性を指定＝1属性につき『+3』（合計+6～+7）</div>
+</div></div>
+
+<div class="skill"><div class="hd">二天一流</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇＆△〕攻撃判定時　※BQAから2つ選択</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>補正値『+2』</div>
+<div class="row"><span class="lbl">改造</span>「属性特効」：ベースとなる補正値を『-1』し、条件を満たすことで追加の補正値を獲得する。（上限+4）特攻対象となる属性は最大で2つまで選択可能。ただし、必須属性と強化属性を織り交ぜた特攻を持つことは出来ない。<br>＜必須属性特攻＞1属性を指定＝1属性につき『+2』（合計+3）<br>＜強化属性特効＞1属性を指定＝1属性につき『+3』（合計+4）、2属性を指定＝1属性につき『+2』（合計+3～+4）</div>
+</div></div>
+
+<div class="skill"><div class="hd">呪術</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>自身のA攻撃判定時</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>・補正値『+3』<br>・「対魔力」及びそれに関連するスキルの補正値『-2』。対象はこの効果をレジストすることができる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">肉体改造</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1～3点</div>
+<div class="row"><span class="lbl">効果</span>ラウンド中、任意の攻撃判定か防御判定一つの補正値『+消費FP+1』</div>
+</div></div>
+
+<div class="skill"><div class="hd">魔眼（〇〇）</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>・戦闘中、対象の攻撃判定の中から任意で一つ選択し、その補正値『-2』。<br>・このマイナス補正値は同一対象に対し累積する。ただし、一度レジストされたら累積分も解除される。</div>
+<div class="row"><span class="lbl">改造</span>「属性特効」：ベースとなる補正値を『-2』から『-1』に変更し、条件を満たすことで追加効果を獲得できる。特攻対象となる属性は最大で1つまで選択可能。<br>＜必須属性特攻＞補正値『-1』(合計-2)、戦闘中レジスト時の消費FP「+1」<br>＜強化属性特効＞補正値『-1』(合計-2)、戦闘中レジスト不可</div>
+</div></div>
+
+<div class="skill"><div class="hd">英雄作成</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP2点</div>
+<div class="row"><span class="lbl">効果</span>・ラウンド中、自身と同盟含む味方陣営1体の〔〇〕攻撃＆防御補正値『+2』<br>・この効果は他の補正値変動系スキルと重複する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">軍略</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP2点、自身に対し使用不可</div>
+<div class="row"><span class="lbl">効果</span>・ラウンド中、同盟含む味方陣営全員の全攻撃＆全防御補正値『+1』<br>・この効果は他の補正値変動系スキルと重複する。</div>
+</div></div>
+
+<h4>■ ダイス変動系</h4>
+
+<div class="skill"><div class="hd">心眼（真）</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕防御判定時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1ラウンド1回</div>
+<div class="row"><span class="lbl">効果</span>・このスキルはダイスの出目を確認した直後に発動可能。<br>・出目を確認した後、ダイス出目から一つを選び、裏返す。</div>
+</div></div>
+
+<div class="skill"><div class="hd">カリスマ</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>同盟含む味方陣営の任意判定後</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1R1回、自身に対し使用不可</div>
+<div class="row"><span class="lbl">効果</span>・対象が同意する時のみ適用可能。<br>・対象の判定を振り直す。この効果は対象が汎用アクション「ブースト」や「振り直し」を使用していた場合でも使用可能。<br>※先制判定の際に使用した場合、1R目の使用権を消費する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">〇〇のカリスマ</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、自身に対し使用不可、〔指定必須属性〕保有者以外無効</div>
+<div class="row"><span class="lbl">効果</span>・ラウンド中、同盟含む味方陣営にいる対象全ての全攻撃判定における出目の一つを「6」で固定する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">縮地</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>自身の先制/逃走/追跡判定時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1シーン「【敏捷】/3(切上げ)」回</div>
+<div class="row"><span class="lbl">効果</span>出目の一つを「6」で固定する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">〇〇の鎖</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP「対象数」点、〔指定強化属性〕保有者以外無効</div>
+<div class="row"><span class="lbl">効果</span>・ラウンド中、自身の攻撃に対して対象が行う全防御判定ダイスの片方を出目「1」で固定する。<br>・対象となったキャラクターはこれをレジストすることはできない。</div>
+</div></div>
+
+<div class="skill"><div class="hd">魅了</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP2点</div>
+<div class="row"><span class="lbl">効果</span>・対象を1体指定し、〔【指定能力】〕による対抗ロールに成功した場合に効果発動。<br>・戦闘中、対象の自身に対する全〔攻撃or防御〕判定の出目の片方を「1」で固定する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">天眼</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>・判定の出目を「+2」する。（上限12）<br>・この効果でC値に到達した場合、クリティカル処理を行う。</div>
+</div></div>
+
+<div class="skill"><div class="hd">無窮の武練</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>戦闘開始時</div>
+<div class="row"><span class="lbl">制限</span>FP2点</div>
+<div class="row"><span class="lbl">効果</span>戦闘中、自身のC値算出計算式を〔【敏捷】or【幸運】×2〕に変更する。※【敏捷】と【幸運】以外を指定することは出来ない</div>
+</div></div>
+
+<div class="skill"><div class="hd">〇〇殺し</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>戦闘開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、〔指定強化属性〕保有者以外無効</div>
+<div class="row"><span class="lbl">効果</span>戦闘中、対象との間で発生する自身の全判定のC値「-1」</div>
+</div></div>
+
+<div class="skill"><div class="hd">直感</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>戦闘開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、初期英雄点-1</div>
+<div class="row"><span class="lbl">効果</span>戦闘中、自身のC値「-1」</div>
+</div></div>
+
+<h4>■ 能力値変動系</h4>
+
+<div class="skill"><div class="hd">強化</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>能力値変動系</div>
+<div class="row"><span class="lbl">発動</span>戦闘開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1シーン1回、【耐久】選択不可</div>
+<div class="row"><span class="lbl">効果</span>・戦闘中、自身の〔【指定能力】〕ランク「+1」<br>・この効果によるランクの上昇は「EX(12)」の上限を突破することができる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">変容</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>能力値変動系</div>
+<div class="row"><span class="lbl">発動</span>戦闘開始時</div>
+<div class="row"><span class="lbl">制限</span>FP2点、1シーン1回、【耐久】選択不可</div>
+<div class="row"><span class="lbl">効果</span>・戦闘中、自身の〔【指定能力A】〕を2ランク下げ、〔【指定能力B】〕を2ランク上げる。<br>・この効果によるランクの上昇は「EX(12)」の上限を突破することができる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">束縛の魔眼</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>能力値変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、【耐久】【幸運】選択不可</div>
+<div class="row"><span class="lbl">効果</span>・戦闘中、対象の【筋力】【敏捷】【魔力】の中から一つ選択し、1ランク下げる。<br>・このスキルによるランク低下は同一対象に累積する。ただし、一度レジストされたら累積分も解除される。</div>
+</div></div>
+
+<h4>■ 特殊攻撃系</h4>
+
+<div class="skill"><div class="hd">ガムシン</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>特殊攻撃系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時　※BQAから1つ選択</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>・追加HPを除く対象のHPに1点以上のダメージを与えた際、対象のFPに「2」点の追加ダメージを与える</div>
+</div></div>
+
+<div class="skill"><div class="hd">怨霊調伏</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>特殊攻撃系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時　※BQAから1つ選択</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>・追加HPを除く対象のHPに1点以上のダメージを与えた際、対象の最大HPを「-2」させる。<br>・この効果は同一対象に重複し、レジストされるまで永続する。</div>
+</div></div>
+
+<h4>■ 情報探索系</h4>
+
+<div class="skill"><div class="hd">千里眼</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>情報探索系</div>
+<div class="row"><span class="lbl">発動</span>スタンバイフェイズ中orクリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1フェイズ1回、自身の「知覚判定」成功で効果発動。</div>
+<div class="row"><span class="lbl">効果</span>・スタンバイフェイズ中に発動した場合、全陣営がどのエリアに滞在しているか把握することができる。<br>・クリンナップフェイズ開始時に発動した場合、任意のエリア1つを指定し、そのエリアにいる陣営の名前を全て把握する。<br>※他陣営が逃走していた場合、逃走先のエリアが確定したタイミングでこの効果が適用される。</div>
+</div></div>
+
+<div class="skill"><div class="hd">情報抹消</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>情報探索系</div>
+<div class="row"><span class="lbl">発動</span>効果参照</div>
+<div class="row"><span class="lbl">制限</span>FP「1+発動回数」点、1シーン1回　※初回2点、2回目3点…／自身の「知覚判定」成功で効果発動。</div>
+<div class="row"><span class="lbl">効果</span>・この効果はセットアップフェイズ中、遭遇アナウンスが発生したタイミングで宣言する。<br>・自身が登場する遭遇ログに対しログ確保能力が使用された場合、それを強制失敗させる。<br>・この効果によりログ確保に失敗したキャラクターは、「何者かに妨害された」と通知される。<br>・使用者は妨害の成否を知ることはできない。</div>
+</div></div>
+
+<div class="skill"><div class="hd">動物会話</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>情報探索系</div>
+<div class="row"><span class="lbl">発動</span>自身の知覚判定時</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>・判定成功率+「15％」<br>・このスキルは自身の「知覚判定」の成功によって起動する他スキルと併用可能。</div>
+</div></div>
+
+<h4>■ FP回復系</h4>
+
+<div class="skill"><div class="hd">魔力炉心</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>FP回復系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド終了時</div>
+<div class="row"><span class="lbl">制限</span>FP「2～4」点、1シーン1回</div>
+<div class="row"><span class="lbl">効果</span>自身のFPを「消費FP×2-1」（最大7）点回復する。※実質回復量＝消費FP-1点</div>
+</div></div>
+
+<div class="skill"><div class="hd">被虐体質</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>FP回復系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、ラウンド中1回のみ適用</div>
+<div class="row"><span class="lbl">効果</span>・宣言したラウンドの自身の被ダメージ計算時、1回の攻撃で8点以上のダメージを適用した場合、自身のFPを4点回復する。<br>・この効果は自身に付与された追加HPへのダメージには適用されない。</div>
+</div></div>
+
+<div class="skill"><div class="hd">吸血</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>FP回復系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時　※BQAから1つ選択</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>・追加HPを除く対象のHPに1点以上のダメージを与えた際、自身のFPを「1d3」点回復する。</div>
+</div></div>
+
+<h4>■ HP回復系</h4>
+
+<div class="skill"><div class="hd">治療</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>HP回復系</div>
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>FP2点、1シーン1回</div>
+<div class="row"><span class="lbl">効果</span>自分を含む同陣営の対象1体のHPを「〔【指定能力】〕/2」点回復させる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">天性の肉体</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>HP回復系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド終了時</div>
+<div class="row"><span class="lbl">制限</span>FP「1～2」点、1シーン1回</div>
+<div class="row"><span class="lbl">効果</span>自身のHPを「消費FP×2」点回復させる。(下限2、上限4)</div>
+</div></div>
+
+<div class="skill"><div class="hd">加虐体質</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>HP回復系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時　※BQAから1つ選択</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>・追加HPを除く対象のHPに1点以上のダメージを与えた際、自身のHPを「1d2」点回復する。</div>
+</div></div>
+
+<h4>■ 独自系</h4>
+
+<div class="skill"><div class="hd">強化対魔力</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>対魔力発動時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、クラススキル「対魔力」の習得</div>
+<div class="row"><span class="lbl">効果</span>対魔力の補正値を「+2」から「+4」に変更する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">暗殺の天使</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1シーン1回</div>
+<div class="row"><span class="lbl">効果</span>・自身の〔〇〕攻撃判定基準値を〔【指定能力】〕に変更する。<br>・このスキルを使用した攻撃を援護する場合、ベースとなる攻撃判定に使用される能力を参照する。<br>※B攻撃であれば【筋力】、Q攻撃であれば【敏捷】、A攻撃であれば【魔力】を参照する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">無冠の武芸</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>キャラクリエイト時</div>
+<div class="row"><span class="lbl">制限</span>自身の最大FP-「保有強化属性数/2(切上げ)」点</div>
+<div class="row"><span class="lbl">効果</span>・エンカウントフェイズ開始時に公開される自身の保有強化属性を隠蔽する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">戦闘続行</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>自身のHPが0以下になった瞬間</div>
+<div class="row"><span class="lbl">制限</span>FP5点、1シーン1回、HPのマイナス値が自身の「【耐久】×2」以内の時のみ</div>
+<div class="row"><span class="lbl">効果</span>・「気絶状態」に移行せず、HPがマイナス状態のまま行動可能。<br>・発動中、自身のHPが1点以上減少した瞬間、強制的に死亡/消滅する。<br>※「追加HP」が残っている場合、「追加HP」が消滅するまで行動可能。<br>・発動したシーンの「クリンナップフェイズ」完了までにHPが1以上にならなければ死亡/消滅する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">ガーディアン</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点</div>
+<div class="row"><span class="lbl">効果</span>・ラウンド中、自身の手番を消費することなく防御援護を実行可能。<br>・この効果は発動中何度も使用できる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">奇襲</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時</div>
+<div class="row"><span class="lbl">制限</span>FP2点、1シーン1回、初期英雄点-2</div>
+<div class="row"><span class="lbl">効果</span>・自身の攻撃判定を「EX攻撃」に変更する。<br>・このスキルは攻撃判定時に発動するスキルと併用できる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">宗和の心得</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド終了時</div>
+<div class="row"><span class="lbl">制限</span>FP2点、1シーン「【幸運】/3(切上げ)」回　※【幸運】以外選択不可。</div>
+<div class="row"><span class="lbl">効果</span>・次ラウンド以降に行う自身の「EX攻撃」の使用回数を回復する。<br>・この効果はクラス特性「暗殺」にも有効とする。</div>
+</div></div>
+
+<div class="skill"><div class="hd">ソウルイーター</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>効果に記載</div>
+<div class="row"><span class="lbl">制限</span>1シーン1回、FP1点、強制発動（中断不可）</div>
+<div class="row"><span class="lbl">効果</span>・このスキルはクリンナップフェイズ中に宣言し、翌シーンのセットアップフェイズ終了時に発動する。<br>・「魂喰らい」をセットアップフェイズ終了時（＝エリア移動完了後）に実行する。この場合、そのシーンにて滞在したエリアにて「事件/異変」アナウンスが発生し、そのシーンのクリンナップフェイズ開始時に公開される。<br>・このスキルによる「魂喰らい」はいかなる手段を以ても妨害できない。<br>・滞在しているエリアに他の陣営いた場合でもこの効果は発動する。この場合、「事件/異変」アナウンスが発生するまで他の陣営は「魂喰らい」を認識することはできない。<br>・自身のFPが0の時にこのスキルが発動した場合、自身のHP「1」点で代用する。<br>・この効果により自身のHPが0以下になる場合、そのまま死亡する。<br>・「魂喰らい」による痕跡を「痕跡：＜任意のテキスト＞」に変更する。※元の魂喰らいの文章そのままは不可</div>
+</div></div>
+
+<div class="skill"><div class="hd">食人衝動</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>1シーン1回、強制発動（中断不可）</div>
+<div class="row"><span class="lbl">効果</span>・現在のシーン数（＝日数）を目標値に2d6で判定を行う。<br>・上記の判定に成功した場合、何も発生しない。<br>・上記の判定に失敗した場合、FPを1点消費して「魂喰らい」を次シーンのセットアップフェイズ終了時（＝エリア移動完了後）に実行する。この場合、そのシーンにて滞在したエリアにて「事件/異変」アナウンスが発生し、そのシーンのクリンナップフェイズ開始時に公開される。<br>・このスキルによる「魂喰らい」はいかなる手段を以ても妨害できない。<br>・滞在しているエリアに他の陣営いた場合でもこの効果は発動する。この場合、「事件/異変」アナウンスが発生するまで他の陣営は「魂喰らい」を認識することはできない。<br>・自身のFPが0の時にこのスキルが発動した場合、自身のHP「1」点で代用する。<br>・この効果により自身のHPが0以下になる場合、そのまま死亡する。<br>・「魂喰らい」による痕跡を「痕跡：＜任意のテキスト＞」に変更する。※元の魂喰らいの文章そのままは不可</div>
+</div></div>
+
+<h3>宝具</h3>
+<ul>
+<li>各サーヴァントはそれぞれ自身を象徴する宝具を初期作成時点で1つ保有している。</li>
+<li>宝具は原則として発動の際に4点以上のFPを消費する必要がある。</li>
+<li>英雄点を3点消費することで追加で宝具を取得することができる。（追加上限2つ）</li>
+<li>宝具同士は同時使用することも可能。</li>
+<li>宝具には以下のカテゴリが存在し、同一カテゴリの宝具を複数保有することは原則不可とする。<br><span class="badge">※「攻撃宝具を2つ」や「防御障壁を2つ」を持つなどは不可。</span></li>
+<li>以下のサンプル宝具を元に改造を施してオリジナル宝具をデザインしてもよい。</li>
+</ul>
+
+<h4>■ 攻撃宝具</h4>
+<div class="skill"><div class="hd">攻撃宝具 Ⅰ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時 (BQAから1つ選択)</div>
+<div class="row"><span class="lbl">制限</span>①FP「4or8」点 又は ②「5or10」点※キャラクリエイト時に①か②を選択。シナリオ中変更不可。</div>
+<div class="row"><span class="lbl">効果</span>・補正値『+消費FP+8』点<br>・マスターに対し攻撃を行った場合、ダメージに関係なく即死効果が付与される。</div>
+<div class="row"><span class="lbl">概要</span>シンプルな攻撃型の宝具。消費FPを可変することで出力の強弱をつけることができる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">攻撃宝具 Ⅱ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇/△〕攻撃判定時 (BQAから2つ選択)</div>
+<div class="row"><span class="lbl">制限</span>FP「5or10」点</div>
+<div class="row"><span class="lbl">効果</span>・補正値『+消費FP+5』点<br>・マスターに対し攻撃を行った場合、ダメージに関係なく即死効果が付与される。</div>
+</div></div>
+
+<div class="skill"><div class="hd">攻撃宝具 Ⅲ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時 (BQAから1つ選択)</div>
+<div class="row"><span class="lbl">制限</span>FP「5or10」点</div>
+<div class="row"><span class="lbl">効果</span>・補正値『+消費FP+5』点<br>・自身の攻撃判定を「EX攻撃判定」に変更する。<br>・マスターに対し攻撃を行った場合、ダメージに関係なく即死効果が付与される。</div>
+</div></div>
+
+<h4>■ 防御障壁</h4>
+<div class="skill"><div class="hd">防御障壁 Ⅰ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP「5」点、戦闘中同一対象への再展開不可、展開中、宝具相殺への使用不可</div>
+<div class="row"><span class="lbl">効果</span>・任意の対象1体に「〔【指定能力】〕+5」点の「追加HP」(上限15)を付与する。<br>・この効果は戦闘中持続する。<br>・対象1体に付与している間、他の対象に追加で付与することはできない。<br>・マスターに付与した場合、「マスターへの即死効果」を無効化する。<br>・この効果を付与された対象が「壊れた幻想」による攻撃の対象となった場合、「壊れた幻想」による補正値を半減する。</div>
+<div class="row"><span class="lbl">概要</span>シンプルな防御宝具。対象に魔力障壁を付与し、ダメージを肩代わりさせる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">防御障壁 Ⅱ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>FP〔ｎ〕点(下限4～上限10)、展開中、宝具相殺への使用不可</div>
+<div class="row"><span class="lbl">効果</span>・ラウンド中、任意の対象1体の全防御判定を『消費FP+2』点する。<br>・マスターに付与した場合、「マスターへの即死効果」を無効化する。<br>・この効果を付与された対象が「壊れた幻想」による攻撃の対象となった場合、「壊れた幻想」による補正値を半減する。</div>
+</div></div>
+
+<h4>■ 攻防一体</h4>
+<div class="skill"><div class="hd">攻防一体</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>補正値変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>「5or10」点</div>
+<div class="row"><span class="lbl">効果</span>・この効果は1ラウンド持続する。<br>・消費FP「5」点の時、〔〇〕攻撃『+A』、〔△〕防御『+B』の補正値を獲得する。※<br>・消費FP「10」点の時、〔▽〕攻撃『+C』、〔◇〕防御『+D』の補正値を獲得する。※<br>※「A+B＝10」、「C+D＝20」<br>・A、B、C、Dの数値はキャラクリエイト時に設定し、それぞれ最低『+4』以上振り分けなければならない。<br>・発動中マスターに対し攻撃を行った場合、ダメージ関係なく即死効果が付与される。<br>※文中の〇、△、▽、◇にはB,Q,A,EXの4つの中から任意のモノを選ぶ。</div>
+<div class="row"><span class="lbl">概要</span>攻撃と防御両方に使用できる宝具。キャラクリエイト時にB/Q/A/EXの中から属性を選択し、攻防の判定2種に対して使用する。攻撃と防御の属性はそれぞれ異なっていても構わない。</div>
+</div></div>
+
+<h4>■ 範囲攻撃</h4>
+<div class="skill"><div class="hd">範囲攻撃 Ⅰ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時 (BQAから1つ選択)</div>
+<div class="row"><span class="lbl">制限</span>FP〔ｎ〕点(下限4～上限10)</div>
+<div class="row"><span class="lbl">効果</span>・使用時に対象数を指定し、それらに対し攻撃を行う。<br>・補正値+『消費FP-（対象数×2）』点※<br>・この宝具は「独自系」として扱い、「補正値変動系」能力の個数制限に影響しない<br>※消費FP6、対象2体＝補正値+『6-4』＝『+2』となる</div>
+<div class="row"><span class="lbl">概要</span>複数対象に対し同時に攻撃を行う宝具。少数に有効なⅠ型と多数に有効なⅡ型がある。</div>
+</div></div>
+
+<div class="skill"><div class="hd">範囲攻撃 Ⅱ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時 (BQAから1つ選択)</div>
+<div class="row"><span class="lbl">制限</span>FP6点</div>
+<div class="row"><span class="lbl">効果</span>・自身の攻撃対象を自身を除く「前衛：全体」に変更する。<br>・任意の対象1体を除外するたびに補正値『-2』。<br>・この宝具は「独自系」として扱い、「補正値変動系」能力の個数制限に影響しない</div>
+</div></div>
+
+<h4>■ 自己強化 / 判定妨害</h4>
+<div class="skill"><div class="hd">自己強化</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>発動時にFP6点、以降ラウンド開始時にFP1点消費。発動中、自身のC値「+1」(上限13)</div>
+<div class="row"><span class="lbl">効果</span>・発動中、自身が行う全判定の出目の片方を「6」に固定する。<br>・発動中、この効果は重複しない(1戦闘に2回発動して両方の出目を「6」にすることはできない)<br>・スキルなどにより出目の1つが固定化されていた場合、固定化されていない出目を「6」にする。※「1d6+6」→「6+6」→「12」<br>・自身の宝具相殺に使用した場合、この効果は即時消失する。<br>※相殺に用いた後、再使用する場合はFP6点消費する必要がある。</div>
+<div class="row"><span class="lbl">概要</span>自分の全能力を向上させる宝具。効果を持続させるためには継続して魔力を消費する必要がある。</div>
+</div></div>
+
+<div class="skill"><div class="hd">判定妨害</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>ダイス変動系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド開始時</div>
+<div class="row"><span class="lbl">制限</span>発動時にFP6点、以降ラウンド開始時にFP1点消費。発動中、自身のC値「+1」(上限13)</div>
+<div class="row"><span class="lbl">効果</span>・発動中、対象が行う全判定の出目の片方を「1」に固定する。<br>・発動中、この効果は重複しない(1戦闘に2回発動して両方の出目を「1」にすることはできない)<br>・スキルなどにより出目の1つが固定化されていた場合、固定化されていない出目を「1」にする。※「1d6+1」→「6+1」→「7」<br>・自身の宝具相殺に使用した場合、この効果は即時消失する。<br>※相殺に用いた後、再使用する場合はFP6点消費する必要がある。</div>
+<div class="row"><span class="lbl">概要</span>相手の運命力に干渉し、短時間行動を阻害する宝具。</div>
+</div></div>
+
+<h4>■ 霊基拡張</h4>
+<div class="skill"><div class="hd">霊基拡張</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>能力値変動系</div>
+<div class="row"><span class="lbl">発動</span>任意</div>
+<div class="row"><span class="lbl">制限</span>FP「8-〔ｎ〕」点(下限5～上限7)、1シーン1回、シナリオ中〔ｎ〕回(n=1～3)※霊地で回復可能</div>
+<div class="row"><span class="lbl">効果</span>・戦闘中、自身の任意能力を合計で〔消費FP〕ランク上昇させる。上昇させる能力はキャラクリエイト時に指定し、以降変更不可。<br>・この効果によるランクの上昇は「EX(12)」の上限を突破することができる。<br>・【耐久】のランクを上昇させた場合、戦闘中「上昇値×3」点の「追加HP」を、【筋力/魔力/幸運】のランクを上昇させた場合、「合計上昇値」点の「追加FP」を獲得する。<br>・この宝具の効果によって獲得した「追加HP」「追加FP」は戦闘終了と共に消失する。<br>※この宝具の発動に「追加FP」を使用することはできない。</div>
+<div class="row"><span class="lbl">概要</span>シナリオ中の使用回数を代償に、通常の計算式よりも大きい強化幅を獲得する宝具。</div>
+</div></div>
+
+<h4>■ 再生能力</h4>
+<div class="skill"><div class="hd">再生能力 Ⅰ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>HP回復系</div>
+<div class="row"><span class="lbl">発動</span>手番開始時/クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>FP〔ｎ〕点(下限4～上限10)</div>
+<div class="row"><span class="lbl">効果</span>・戦闘中においては自身の手番を消費して発動。<br>・自身を含む任意の対象1体のHPを「(消費FP+〔指定能力〕)/2(切上げ)」点回復する。<br>※FP4、能力C(6)の場合、「(4+6)/2」＝10/2＝5点回復となる。</div>
+<div class="row"><span class="lbl">概要</span>HPを回復する宝具。Ⅰ型は任意の対象1体を、Ⅱ型は自身のみを回復する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">再生能力 Ⅱ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>HP回復系</div>
+<div class="row"><span class="lbl">発動</span>ラウンド終了時</div>
+<div class="row"><span class="lbl">制限</span>FP〔ｎ〕点(下限4～上限10)</div>
+<div class="row"><span class="lbl">効果</span>・自身のHPを「(消費FP+〔指定能力〕)/2(切上げ)」点回復する。<br>※FP4、能力C(6)の場合、「(4+6)/2」＝10/2＝5点回復となる。</div>
+</div></div>
+
+<h4>■ 改造宝具</h4>
+<div class="skill"><div class="hd">改造宝具</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>？？？</div>
+<div class="row"><span class="lbl">発動</span>任意</div>
+<div class="row"><span class="lbl">制限</span>FP〔ｎ〕点（下限4～上限10）</div>
+<div class="row"><span class="lbl">効果</span>GUと応相談</div>
+<div class="row"><span class="lbl">概要</span>GMと相談しつつ、効果を設定する完全オリジナル宝具。既存宝具をベースに改造を施す場合もこのカテゴリに分類される。</div>
+</div></div>
+
+<h3>宝具相殺</h3>
+<ul>
+<li>自身に対して使用された敵対者の宝具を、自身が保有する宝具を使って相殺する特殊アクション。</li>
+<li>このアクションは1Rに1回だけ使用できる。</li>
+<li>基本的に全ての宝具は宝具相殺に用いることが可能。改造宝具についてはGM判断で使用の可不可を判断する。</li>
+<li>実行の際には以下の条件を満たす必要があり、満たせない場合は宝具の効果がそのまま適用される。</li>
+</ul>
+<div class="tablewrap">
+<table>
+<thead><tr><th class="center">条件</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td class="center">①</td><td>相殺対象となる宝具データを所持している。<br>※初見時は原則相殺不可で、2回目以降あるいはログ確保、真名看破等で宝具のデータを保有している場合は相殺可能となる</td></tr>
+<tr><td class="center">②</td><td>相殺に用いる自身の宝具データ1つを開示する。この時、相手が既にデータを保有しているかどうかは関係ない。</td></tr>
+<tr><td class="center">③</td><td>対象が宝具を起動する際に用いたFPと同点のFP消費する。相殺対象となる宝具の消費FPが軽減されている場合は、軽減前のFPを参照する。<br>※複数の宝具が同一タイミングで発動され、それを相殺したい場合は合計分のFPを支払わなければ相殺できない。尚、この場合でも開示する宝具データは一つだけでよい。</td></tr>
+<tr><td class="center">④</td><td>当該ラウンドにおいて相殺に用いる宝具を使用していない。<br>※ラウンド開始時に発動した宝具の場合、発動直後のラウンドにおいては相殺に使用できないが、次ラウンド以降であれば使用可能。<br>※ラウンド中、相殺に使用した宝具を通常手順で使用することは出来ない。</td></tr>
+<tr><td class="center">⑤</td><td>「シナリオ中〔ｎ〕回」などの回数制限がある宝具で相殺する場合、相殺時に回数を消費する。</td></tr>
+</tbody>
+</table>
+</div>
+<h4>各宝具カテゴリの相殺タイミングと処理</h4>
+<div class="tablewrap">
+<table>
+<thead><tr><th>宝具カテゴリ</th><th>相殺時の処理</th></tr></thead>
+<tbody>
+<tr><td>攻撃宝具 Ⅰ型～Ⅲ型</td><td>・自身の防御判定時に相殺を宣言する。<br>・相殺直後における自身の手番を消費する場合、対象が使用した宝具の攻撃補正値と同点の防御補正値を獲得する。※①<br>・相殺直後における自身の手番を消費しない場合、対象が使用した宝具の攻撃補正値の半分の補正値を獲得する。※②<br>・相殺によって獲得した防御補正値は相殺終了と共に消失する。<br>・Ⅲ型の場合、攻撃判定を変更する効果はそのまま適用される。<br>※①そのラウンドにおける自身の手番が既に消費済みだった場合、次のラウンドの手番を消費する。<br>※②最終ラウンド等で相殺直後の手番が存在しない場合はこちらの補正値を適用する。</td></tr>
+<tr><td>攻防一体</td><td>・自身の防御判定時に相殺を宣言する。<br>・相殺直後における自身の手番を消費する場合、対象が使用した宝具の攻撃補正値と同点の防御補正値を獲得する。※①<br>・相殺直後における自身の手番を消費しない場合、対象が使用した宝具の攻撃補正値の半分の補正値を獲得する。※②<br>・相殺によって獲得した防御補正値は相殺終了と共に消失する。<br>・相殺対象が宝具によって獲得している防御補正値はそのまま残る。<br>※①そのラウンドにおける自身の手番が既に消費済みだった場合、次のラウンドの手番を消費する。<br>※②最終ラウンド等で相殺直後の手番が存在しない場合はこちらの補正値を適用する。</td></tr>
+<tr><td>範囲攻撃 Ⅰ型～Ⅱ型</td><td>・自身の防御判定時に相殺を宣言する。<br>・相殺直後における自身の手番を消費する場合、対象が使用した宝具の消費FPと同点の防御補正値を獲得する。※①<br>・相殺直後における自身の手番を消費しない場合、対象が使用した宝具の消費FPの半分の補正値を獲得する。※②<br>・相殺によって獲得した防御補正値は相殺終了と共に消失する。<br>※①そのラウンドにおける自身の手番が既に消費済みだった場合、次のラウンドの手番を消費する。<br>※②最終ラウンド等で相殺直後の手番が存在しない場合はこちらの補正値を適用する。</td></tr>
+<tr><td>判定妨害</td><td>・対象が発動した直後に宣言する。<br>・相殺した者はその効果を無効化する。</td></tr>
+<tr><td>防御障壁 Ⅰ型～Ⅱ型／自己強化／再生能力 Ⅰ型～Ⅱ型／霊基拡張</td><td>この宝具は相殺されない</td></tr>
+<tr><td>改造宝具</td><td>・効果内容を見てGMがその都度判断する。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>壊れた幻想（ブロークン・ファンタズム）</h3>
+<ul>
+<li>サーヴァント及びマスターの保有する宝具/マスター宝具の一つを代償に行う特殊アクション。</li>
+<li>このアクションは自身のHPが「最大HPの50％以下(切上げ)」の時にのみ実行可能。</li>
+<li>このアクションは1Rに1回だけ使用できる。</li>
+<li>保有する宝具/マスター宝具を一つ選択し破壊する。破壊した宝具は以降使用不能となり、その効果も即時消失する。</li>
+<li>制限に「シナリオ中〔ｎ〕回」の記載があり、それを使い切った宝具でこのアクションを実行することはできない。</li>
+<li>使用者は自身の攻撃判定に、選択した宝具の『消費FP×2』点の補正値を加算する。消費FPが可変式の場合、最大の数値を参照する。ただし、「マスター宝具」の場合は『最低消費FP×2』点の補正値となる。</li>
+<li>宝具「範囲攻撃」に上乗せして使用する場合、加算される補正値は『消費FP×2/対象数(切上げ)』点となる。</li>
+<li>宝具を複数保有するキャラクターはシナリオ中、保有している宝具の数だけこのアクションを実行できる。</li>
+<li>このアクションの実行に自身のFPを消費しない。</li>
+<li>このアクションによる補正値は他のスキル/宝具に上乗せすることができる。</li>
+<li>このアクションによる補正値は「宝具相殺」で打ち消すことはできない。</li>
+</ul>
+
+<h3>容姿、その他設定の作成</h3>
+<ul><li>一通りのデータが決まった段階で容姿や詳細な設定を作成する。</li><li>この段階でキャラクターの立ち絵なども用意するとよい。</li></ul>
+
+<h2 class="chapter" id="cc-master">6. キャラクリエイト・マスター編</h2>
+<h3>マスターの能力</h3>
+<p>マスターは以下の能力を保有している。</p>
+<ol><li>令呪（各マスターにつき3画）</li><li>汎用マスタースキル：下記の「汎用マスタースキル」一覧から2つ習得</li><li>固有マスタースキル：下記の「固有マスタースキル」一覧から3つ習得</li></ol>
+
+<h3>令呪</h3>
+<ul><li>サーヴァントを従えるためにマスター全員に対し聖杯ないし監督役から配布される対サーヴァント用の絶対命令権。</li><li>マスター一人につき最大3画配布され、後述する「討伐令」の報酬として追加配布される場合もある。</li><li>令呪にはスキル/宝具のリソースとして使用するほか、それ単体で自身のサーヴァントに対し以下の効果を発動可能。</li></ul>
+<div class="tablewrap">
+<table>
+<thead><tr><th class="center">効果</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td class="center">①</td><td>判定直前に宣言。宣言後に行う判定に対し補正値『±8』。この補正値は他スキルの補正値と重複する。</td></tr>
+<tr><td class="center">②</td><td>判定直後に宣言。直前に行った判定ダイスを振りなおし、振りなおす前と後のどちらを採用するか選択できる。</td></tr>
+<tr><td class="center">③</td><td>任意のタイミングで自身のサーヴァントのFPを「6」点即時回復させる。</td></tr>
+<tr><td class="center">④</td><td>特殊RP(自害など)を強制させる手段として使用する。内容によってはGMにより禁止されるので注意。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>汎用マスタースキル</h3>
+<ul><li>マスター全員が共通して保有しているスキル。下記の一覧から2つ選択し、習得する。</li><li>下記のスキルを改造することは原則不可とする。</li></ul>
+
+<div class="skill"><div class="hd">魔力供給 Ⅰ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>HP回復系</div>
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1シーン1回、自身に対し使用不可</div>
+<div class="row"><span class="lbl">効果</span>・同盟含む味方サーヴァント1体のHPを「2」点回復する。<br>・発動時に追加で自身のHPを消費することで、消費した点数分の固定値を獲得可能。ただし、追加消費可能なHPは「自身の【耐久】」（上限+8）点までとする。</div>
+</div></div>
+
+<div class="skill"><div class="hd">魔力供給 Ⅱ型</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>FP回復系</div>
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1シーン1回、自身に対し使用不可</div>
+<div class="row"><span class="lbl">効果</span>・同盟含む味方サーヴァント1体のFPを「2」点回復する。<br>・発動時に追加で自身のFPを消費することで、消費した点数分の固定値を獲得可能。ただし、追加消費可能なFPは「自身の【魔力】」点（上限+5）までとする。</div>
+</div></div>
+
+<div class="skill"><div class="hd">回路賦活</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>--</div>
+<div class="row"><span class="lbl">効果</span>・エンカウントフェイズにて戦闘が発生した場合でも自身のFP自然回復が発生する。ただし、回復量は通常時の半分(切上げ)となる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">回路連結</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>任意</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1シーン【魔力】回</div>
+<div class="row"><span class="lbl">効果</span>任意のタイミングで自身のサーヴァントが消費するFPを任意点だけ肩代わりする。(上限「自身の【魔力】」点)<br>※発動にFP1点を消費し、その後肩代わりするFP点を消費する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">魔力装填</div><div class="bd">
+<div class="row"><span class="lbl">タイプ</span>独自系</div>
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>FP2点、1シーン1回</div>
+<div class="row"><span class="lbl">効果</span>・下記リストからアイテムを1つ入手する。追加でFPを2点消費することで更に1つ入手可能 (1シーン最大2個)。<br>・入手したアイテムは戦闘、非戦闘を問わず、任意のタイミングで任意の対象に使用できる。※同盟以外の陣営に対し使用する場合、エンカウントフェイズ中でなければならない。<br>・アイテムは戦闘中1Rに1回、それ以外の場面では1フェイズに1回、2つまで同時に使用可能。<br>・戦闘中では後衛から前衛に、前衛から後衛に対しても使用可能とする。<br>・所持上限は最大3つまでとし、他者への譲渡は不可とする。<br><br>＜アイテム効果リスト＞※アイテム名は自由<br>　①対象のHPを「3」点回復する。<br>　②対象のFPを「2」点回復する。</div>
+</div></div>
+
+<h3>固有マスタースキル</h3>
+<ul>
+<li>それぞれのマスターが個別に保有する特殊能力。</li>
+<li>マスタースキルは基本的に「独自系」に分類される。それ以外のタイプに分類される場合は、「制限」の項目に記載する。</li>
+<li>下記の一覧から選択または抽選を行い、習得する。※効果はそのままに名前を変更することも可能。</li>
+<li>それぞれのスキルは1キャラクターにつき1つまでしか習得できない。また、スキル名に「抽選」の記載があるものは、戦争中に1組しか保有できない。</li>
+<li>マスタースキルは基本的に下記表に記載されている効果をそのまま使用することを前提としている。</li>
+<li>下記表に無いオリジナルスキルをGM監修のもと作成することも可能。また、既存スキルを改造して効果を変更することもできる。ただし、バランスを加味してGMが却下する場合もあるので注意する。</li>
+<li>強力な効果を持つマスタースキルの場合、マスタースキル枠を2つ消費することもある。この判断はGMが全体のバランスを見つつ行う。</li>
+<li>下記のスキルとは別に、マスターは遭遇及びログ確保などで視認したサーヴァントのステータスを閲覧できる。（※①スキル・宝具などは別途真名看破の必要あり）</li>
+</ul>
+<div class="tip"><b>抽選ルール（サンプル）：</b>①参加者は各自第一から第三までの希望をGMに提出する。②複数の希望者がいた場合、上位に希望を出した人が優先される。③同じ希望順位で被った場合は抽選が発生する。④その他条件がある場合は事前にGMに申告する。⑤当選したスキルは必ず覚えなければならない。</div>
+
+<div class="skill"><div class="hd">敵情視察</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1シーン1回、未遭遇時限定、「タイプ：情報探索系」に分類</div>
+<div class="row"><span class="lbl">効果</span>隣接するエリアにて発生した遭遇ログを1つ選択し入手できる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">事前調査</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1シーン1回、「タイプ：情報探索系」に分類</div>
+<div class="row"><span class="lbl">効果</span>・マスターを一人指定し、任意の「探索判定」を行う。※未遭遇の対象でも選択可能。<br>・探索判定成功時、使用者は対象となったマスターのキャラシートを獲得できる。※①<br>・探索判定成功時、使用者は対象となったマスターに対し「個別チャット開設」の権利を行使することができる。<br>※①「霊基融合」保有者が対象になった場合、対象のマスター用キャラシートのみ獲得する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">隠蔽工作</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>FP「発動回数×2」点※初回2点、2回目4点…／「タイプ：情報探索系」に分類／自身の「知覚判定」成功で効果発動</div>
+<div class="row"><span class="lbl">効果</span>・同盟含む味方陣営の1体が実行した「魂喰らい」等によって発生する「事件/異変アナウンス」を1シーン後に遅らせる。<br>・この効果は2体以上の「魂喰らい」等によって発生する「事件/異変アナウンス」には適用されない。<br>・この効果によって隠蔽された「魂喰らい」等の痕跡は消失する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">運転免許</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>①同盟含む味方陣営の逃走判定時／②エリア移動時</div>
+<div class="row"><span class="lbl">制限</span>FP2点、自身の「知覚判定」か「肉体判定」の成功で効果発動。</div>
+<div class="row"><span class="lbl">効果</span>①蓄積されている逃走ペナルティを半減する。<br>②2つ先のエリアまで移動可能。これは同盟締結中も有効とする。</div>
+</div></div>
+
+<div class="skill"><div class="hd">物資調達</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>FP1点、1シーン1回</div>
+<div class="row"><span class="lbl">効果</span>・下記リストからアイテムを1つ入手する。追加でFPを2点消費することで更に1つ入手可能 (1シーン合計2個)。<br>・入手したアイテムは戦闘中1Rに1回、2つまで同時に使用可能。<br>・戦闘中では後衛から前衛に、前衛から後衛に対しても使用可能とする。<br>・所持上限は最大5つまでとし、他者への譲渡は不可とする。※汎用マスタースキル「魔力装填」とは別カウントとする。<br><br>＜アイテム効果リスト＞※アイテム名は自由<br>　①対象1体の攻撃or防御判定補正値『+2』。この効果はスキル/宝具の補正値と重複する※対象の判定前に使用<br>　②対象1体の判定を振りなおさせる。この効果は汎用アクション「振り直し」の回数に含まない※対象の判定後に使用</div>
+</div></div>
+
+<div class="skill"><div class="hd">強化触媒</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>キャラクター作成時</div>
+<div class="row"><span class="lbl">制限</span>--</div>
+<div class="row"><span class="lbl">効果</span>サーヴァントの英雄点「+2」。</div>
+</div></div>
+
+<div class="skill"><div class="hd">交渉巧者</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>常時</div>
+<div class="row"><span class="lbl">制限</span>--</div>
+<div class="row"><span class="lbl">効果</span>個別チャット開設回数を「2回」から「4回」に増加させる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">乾坤一擲</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>自身の〔〇〕攻撃判定時　※B/Q/Aから一つ選択</div>
+<div class="row"><span class="lbl">制限</span>シナリオ中1回、「タイプ：補正値変動系」に分類</div>
+<div class="row"><span class="lbl">効果</span>・自身の最大FPを任意点減少させ、『減少させたFP×3』点の補正値を獲得する(補正値上限+12)<br>・このスキルで減少させた最大FPは、シナリオ中いかなる手段を以てしても回復しない。<br>※消費するのは「最大FP」のみであり、「現在FP」は消費しない。ただし、それらが同値の場合は「最大FP」の減少に合わせて「現在FP」も消費する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">巻込まれ</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>キャラクター作成時／常時</div>
+<div class="row"><span class="lbl">制限</span>マスターの初期英雄点「-1」／「現地在住」を除く抽選が必要なマスタースキルと同時習得不可／マスター英雄点増強系スキルと同時習得不可</div>
+<div class="row"><span class="lbl">効果</span>・「雇われ人」によるマスターデータ入手の選択肢から除外される。<br>・未遭遇の「事前調査」保有者から対象として選択された時、最初の1回を無効化する(強制発動)。<br>・エンカウントフェイズにて自陣営が戦闘に参加していた場合、そのシーンのクリンナップフェイズ開始時に自身の現在FPと最大FPを「1」点増加させる。この効果は最大「5」点まで累積する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">戦闘機動</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>汎用アクション「配置転換」使用時</div>
+<div class="row"><span class="lbl">制限</span>--</div>
+<div class="row"><span class="lbl">効果</span>・自陣営が行う配置転換の使用回数を「1戦闘1回」から自陣営の探索技能「肉体/2(切上げ)」回に変更する。<br>※上記「肉体」の数値はマスターとサーヴァントの平均値で計算する。<br>※「配置転換」を行う度にFPは消費する。</div>
+</div></div>
+
+<div class="skill"><div class="hd">強化人間</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>キャラクター作成時</div>
+<div class="row"><span class="lbl">制限</span>他のマスター英雄点増強系スキルと同時習得不可</div>
+<div class="row"><span class="lbl">効果</span>・マスターの英雄点「+5」点。（合計15点）<br>・「神性」を除く任意の強化属性を1つまで獲得できる。<br>・マスターのステータスランクの上限を「C(5)」から「B(7)」に引き上げる。<br>・宝具に付与されているマスター即死効果を無効化し、通常の防御判定処理を行う。</div>
+</div></div>
+
+<div class="skill"><div class="hd">伝承保菌</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>キャラクター作成時</div>
+<div class="row"><span class="lbl">制限</span>「強化人間」「人外種族」「霊基融合」いずれかの習得が前提。</div>
+<div class="row"><span class="lbl">効果</span>・マスター自身にサーヴァントと同等の宝具を1つ持たせる。これを「マスター宝具」と呼称する。（※①）<br>・「強化人間」保有者がマスター宝具を保有する場合、2つ分のマスタースキル枠を消費する。<br>・「人外種族」「霊基融合」保有者の場合、1つ分のマスタースキル枠を消費する。<br>・マスター宝具は1シーンに1回しか使用できない。<br>・消費FPが可変式の場合、選択できる中で最低コストのFPに固定される。（※②）<br>※①：原則として「改造宝具」は選択できない<br>※②：「攻撃宝具」等の場合、強制的に消費FP4点になる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">雇われ人（抽選）</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>キャラクター作成時</div>
+<div class="row"><span class="lbl">制限</span>--</div>
+<div class="row"><span class="lbl">効果</span>・希望者の中から抽選で決まった参加者一人と同盟を締結した状態で戦争参加できる。※全体の戦力バランスを考慮し、GMが恣意的に雇い主を決める場合もある。<br>・希望者がいない場合は監督役(GM)が雇い主となり、他参加者の中からランダムに一人選んでマスターデータを獲得できる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">土地管理（抽選）</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>キャラクター作成時</div>
+<div class="row"><span class="lbl">制限</span>シナリオ開始時、マスターのキャラシートを全体公開する。／マスタースキル「現地在住」と同時習得不可</div>
+<div class="row"><span class="lbl">効果</span>・シナリオ開始時、スタート地点が霊地となる。<br>・霊地による自身のHPとFPの回復量「+1」。ただし、上限は「5」点のままとする。<br>・クラス抽選の際、第一次クラス抽選の時点で開催地を指定することが可能となる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">現地在住（抽選）</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>キャラクター作成時／常時</div>
+<div class="row"><span class="lbl">制限</span>マスタースキル「土地管理」と同時習得不可</div>
+<div class="row"><span class="lbl">効果</span>・クラス抽選の際、「土地管理」保有者がいた場合は第一次クラス抽選の段階で開催地を知ることができる。<br>・「土地管理」保有者がいない場合、第一次クラス抽選の段階で開催地を指定できる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">魔術工房（抽選）</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>クリンナップフェイズ開始時</div>
+<div class="row"><span class="lbl">制限</span>シナリオ中1回、1エリアにつき1つまでしか設置できない。</div>
+<div class="row"><span class="lbl">効果</span>・自身が滞在するエリアにオブジェクト「工房Lv.1」を設置する。<br>・設置したシーン以降、クリンナップフェイズ開始時に「工房Lv.」を「+1」させる(上限Lv.5)。この効果は作成者が設置エリアに不在だった場合、発動しない。<br>・工房は「Lv.×2」点のHPとFPを保有する。これらの数値は「工房Lv.」の上昇に伴い現在値と最大値の両方が上昇する。最大値が上限に達していた場合、HP/FPはクリンナップフェイズ開始時に「Lv.」点回復する。<br>・設置者と同陣営のキャラクター(同盟含む)は任意のタイミングで工房のFPを使用できる。<br>・工房を設置したエリアに侵入した陣営及びそのエリアのログを確保した陣営は、そのエリアが工房であると把握する。<br>・設置者は工房に侵入してきた陣営の陣営名を把握する。この効果は不在時でも発動し、該当シーンのクリンナップフェイズ開始時に通知される。</div>
+</div></div>
+
+<div class="skill"><div class="hd">副召喚主（抽選）</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>キャラクター作成時</div>
+<div class="row"><span class="lbl">制限</span>取得の際マスタースキルの枠を2つ消費する。</div>
+<div class="row"><span class="lbl">効果</span>・メインとなるマスターとは別にもう一体マスター（以下、サブマスター）を作成する。<br>・サブマスターの初期英雄点は10点であり、ステータス制限や「マスターに対する即死効果」等は通常のマスターに準拠する。<br>・メインとなるマスターが死亡・脱落宣言を行った場合、サブマスターが健在であってもその陣営は脱落する。<br>・エンカウントフェイズにてメインとなるマスターが登場している場合、サブマスターは登場しなくてもよい。※逆は不可<br>・サブマスターは令呪を持たないが、GMが許可する場合に限り、RP演出の一環として使用することは可能。<br>・サブマスターは通常のキャラクター同様、戦闘に参加できる。※前衛後衛間の移動、攻撃、防御、援護等も可能。<br>・サブマスターは以下のスキルのみを保有する。<br>　「回路連結(サブマスター)」：汎用マスタースキル「回路連結」と効果は同じ。ただし、自陣営のサーヴァントに加えてメインとなるマスターも対象とできる。</div>
+</div></div>
+
+<div class="skill"><div class="hd">人外種族＜〇〇＞（抽選）</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>キャラクター作成時</div>
+<div class="row"><span class="lbl">制限</span>同盟不可、他のマスター英雄点増強系スキル及び「雇われ人」と同時習得不可</div>
+<div class="row"><span class="lbl">効果</span>・マスターの英雄点を「+10」点する。（合計20点）<br>・マスターのステータスランクの上限を「C(5)」から「A(9)」に引き上げる。<br>・宝具に付与されているマスター即死効果を無効化し、通常の防御判定処理を行う。<br>・強化属性「魔性」「妖精」「獣性」のいずれか1つを獲得する。この時、強化属性獲得に伴う追加英雄点も発生する。※スキル名の＜〇〇＞には強化属性に応じた種族を記入する。「魔性」なら死徒、「妖精」なら妖精、「獣性」なら人狼など。<br>・「魂喰らい」をセットアップフェイズ終了時(＝エリア移動完了後)に実行できるようになる(任意発動)。このスキルによる「魂喰らい」の「事件/異変」アナウンスはそのシーンのクリンナップフェイズ開始時に公開される。<br>・このスキルによる「魂喰らい」はいかなる手段を以ても妨害できず、滞在しているエリアに他の陣営いた場合でも実行可能。この場合、「事件/異変」アナウンスが発生するまで他の陣営は「魂喰らい」を認識することはできない。<br>・偶数シーンに1回、クリンナップフェイズ開始時に自身の最大HPが「-5」される（下限5）。この効果による最大HPの減少はシナリオ中回復することはない。また、現在HPが最大HPを上回った場合、溢れた分は消失する。<br>・自身が行う「魂喰らい」の効果に＜そのシーンに発生する最大HP減少効果を無効化する＞を追加する。<br>・「魂喰らい」による痕跡を「痕跡：＜任意のテキスト＞」に変更する。※元の魂喰らいの文章そのままは不可。</div>
+</div></div>
+
+<div class="skill"><div class="hd">霊基融合（抽選）</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>キャラクター作成時</div>
+<div class="row"><span class="lbl">制限</span>他のマスター英雄点増強系スキル、「強化触媒」と同時習得不可、サーヴァント召喚不可</div>
+<div class="row"><span class="lbl">効果</span>・マスターの英雄点を「+20」点(合計30点)し、マスター自身をサーヴァントとして扱う。※ステータスランクの上限は取り払われ、クラス補正・特性、スキル/宝具、強化属性などを通常サーヴァント準拠とする。<br>・HP/FP計算をマスターの「戦型」からサーヴァントの「戦型」で算出する。<br>・マスター即死効果を無効化し、通常の防御判定処理を行う。<br>・その他、「霊基融合キャラシートに関連する処理」を参考にキャラクリエイトする。</div>
+<div class="row"><span class="lbl">補足</span>「霊基融合キャラシートに関連する処理」※キャラシの効果欄には記載不要<br>①初めにサーヴァント用のキャラシートを作成し、その後マスター用のキャラシートを完成させる。<br>②サーヴァント用のキャラシートにある真名の欄には「マスターの名前(英霊名：〇〇)」と記載する。また、性別や容姿の欄もマスターのモノに準拠する。<br>③サーヴァント用のキャラシートに記載されているHP/FP、属性、ステータスなどをそのままマスター用のキャラシートに転記する。<br>④その他の部分についてはマスター用、サーヴァント用とも通常通りに作成する。<br>☆マスタースキル「事前調査」によって獲得されるシートはマスター用のキャラシートのみとなる。サーヴァント用のキャラシートは別途真名看破に成功する必要がある。</div>
+</div></div>
+
+<div class="skill"><div class="hd">洗礼詠唱（抽選）</div><div class="bd">
+<div class="row"><span class="lbl">発動</span>自身の攻撃判定時</div>
+<div class="row"><span class="lbl">制限</span>前衛時のみ使用可能、「人外種族」保有者は使用不可</div>
+<div class="row"><span class="lbl">効果</span>・攻撃判定の代わりに手番を消費して効果発動。<br>・サーヴァントあるいは強化属性「魔性」を保有している対象1体を指定し、自身の「〔【魔力】or【幸運】×2〕」(上限10)点の防御無視ダメージを与える。<br>・対象が「魂喰らい」を行っていた場合、追加で「5」点の防御無視ダメージを与える。これはダメージ計算時にGMが計算し公開する。<br>・この効果によるダメージは対象に付与された追加HPを無視する。<br>※対象が「魔性」を保有したサーヴァントである場合、「〔【魔力】or【幸運】〕×3」(上限10)点の防御無視ダメージを与える。<br>※「霊基融合」を保有しているマスターはサーヴァントではなくマスターとしてカウントする。</div>
+</div></div>
+
+<h3>名前、職業、容姿の設定</h3>
+<ul><li>マスタースキルが決まったら、その組み合わせに合ったマスターの名前、表向きの職業、容姿を考える。</li><li>この段階でキャラクターの立ち絵なども用意するとよい。</li></ul>
+
+<h3>☆オプションルール：オープニングSS／陣営画像／ハンドアウト</h3>
+<p>GMは参加者の意志を確認し、下記の中から任意の創作物を採用する。</p>
+<h4>オープニングSS</h4>
+<ul><li>前日譚や自己紹介等、各陣営をイメージしたSSを作成する。</li><li>このSSは立ち絵の公開と同時に全体公開する。</li></ul>
+<h4>陣営画像の作成</h4>
+<ul><li>サーヴァントとマスターの画像（駒用・アイコン用など）を用いて、その陣営のイメージ、雰囲気を表す画像を作成する。</li><li>サイズに明確な基準はないが、比率としては横16：縦9を目安としている。</li><li>この画像は立ち絵の公開と同時に全体公開する。</li></ul>
+<h4>ハンドアウトの作成</h4>
+<ul><li>マスターに関する設定、願い、バックグラウンド等の設定を数値的なデータ等に直接言及しない範囲で記載する。この時作成者は可能な限り真実の情報を記載する努力義務が課せられる。</li><li>各プレイヤーはシナリオ開始時に任意のマスター1人のハンドアウトを獲得できる。ハンドアウトを獲得したプレイヤーは獲得したハンドアウトのマスターに対し、チャット開設権を行使できる（しなくてもよい）。</li><li>マスタースキル「事前調査」保有者は対象のキャラクターシート獲得と同時に、ハンドアウトも獲得できる。</li><li>ハンドアウトは自身の意志で同盟相手等に開示することも可能。</li><li>ハンドアウトを入手した参加者は、情報交換のために自由に取り扱ってもよい。</li></ul>
+<div class="tip"><b>☆ハンドアウトサンプル☆</b><br>
+名前：衛宮士郎<br>
+職業：学生<br>
+経歴：10年前に発生した冬木大火災の生き残り。養父から魔術を教わっていたが、強化すらろくに成功しない半端者。偶然にも令呪の兆しが宿り、意図せぬ形で聖杯戦争に巻き込まれた。彼の目的は「聖杯戦争の穏便な解決」らしい。</div>
+
+<!-- ======================================================= -->
+<!-- 7. 判定関連 -->
+<!-- ======================================================= -->
+<h2 class="chapter" id="judge">7. 判定関連</h2>
+
+<h3>7-1. 判定の基本</h3>
+<p>本システムの判定は原則として <b>2d6</b> を振り、その出目に各種補正値を加えて行う。判定には大きく分けて、戦闘中に行う「戦闘判定」と、情報収集等で行う「探索判定」がある。</p>
+<div class="notice"><b>クリティカル／ファンブル：</b>出目の合計が各キャラクターの「C値（クリティカル値）」以上の場合はクリティカル、出目がゾロ目の「1・1」の場合はファンブルとして扱う。C値の算出式は能力値やスキル/宝具によって変動する（既定は【敏捷】【幸運】等を参照）。</div>
+
+<h3>7-2. 戦闘判定（攻撃判定・防御判定）</h3>
+<ul>
+<li>攻撃側は「攻撃判定」、防御側は「防御判定」を行い、その数値を比較して命中／回避を処理する。</li>
+<li>攻撃判定・防御判定にはそれぞれ B（バスター）・Q（クイック）・A（アーツ）の系統があり、用いる能力値が異なる（B＝【筋力】、Q＝【敏捷】、A＝【魔力】を基準とする）。</li>
+<li>「ブースト」「振り直し」「スキルレジスト」等の汎用アクションは、本文「キャラクリエイト・共通編」のFP関連ルールに従って使用する。</li>
+</ul>
+<div class="tip"><b>汎用アクションの確認：</b>戦闘判定に関わる「ブースト（FP1点 or HP2点で補正値+2）」「振り直し」などの詳細は、第4章「FP（フェイトポイント）」の汎用アクション表を参照すること。</div>
+
+<h3>7-3. 探索判定</h3>
+<ul>
+<li>探索点を割り振った「肉体」「知覚」「教養」の3技能を用いて行う判定。情報収集や一部スキル/宝具の発動条件として使用する。</li>
+<li>探索判定の成功・失敗、及び成功時に得られる情報の内容はGMが裁定する。</li>
+<li>「千里眼」「事前調査」など、知覚判定等の成功を発動条件とするスキル/宝具は、各々の効果テキストに従う。</li>
+</ul>
+
+<!-- ======================================================= -->
+<!-- 8. 戦闘関連 -->
+<!-- ======================================================= -->
+<h2 class="chapter" id="battle">8. 戦闘関連</h2>
+
+<h3>8-1. 戦闘の進行</h3>
+<p>戦闘はエンカウントフェイズ中に発生し、「ラウンド」を単位として進行する。各ラウンドの開始時に先制判定等を処理し、手番ごとに攻撃・防御・スキル/宝具の使用・汎用アクションを行う。発動タイミングの詳細は第4章「スキル/宝具の発動タイミング」の入れ子図を参照する。</p>
+
+<h3>8-2. HPとFP</h3>
+<div class="notice">
+<b>HP（ヒットポイント）：</b>体力的リソース。0以下になると「気絶」状態に移行し行動不能となる。マイナス分が自身の「【耐久】×2」を超えると「死亡/消滅」する。気絶中にHPが1以上に回復すれば次ラウンドから行動を再開できる。<br><br>
+<b>FP（フェイトポイント）：</b>魔力的リソース。スキル/宝具や汎用アクションのコストとして消費する。<b>0になってもペナルティは無いが、0未満になる行動はできない。</b>戦闘が発生しなかったシーンのクリンナップフェイズに「【魔力】/2（切上げ）」点回復する。
+</div>
+
+<h3>8-3. フィールドと前衛／後衛</h3>
+<p>戦闘は「前衛」「後衛」の概念で管理する。前衛・後衛を超えてアイテムやスキル/宝具を使用する場合、効果テキスト中に「前衛から後衛、後衛から前衛へ使用可能」等の記載が必要となる（第4章「スキル/宝具について」参照）。自身の配置は汎用アクション「<b>配置転換</b>」（FP1点・1戦闘1回・自陣営の手番最速のタイミングのみ）で変更できる。</p>
+<p>オブジェクト（陣地・工房など）は戦闘中「前衛」に強制配置され、敵対陣営の攻撃対象に選択できる。詳細は第4章「オブジェクト」を参照する。</p>
+
+<h3>8-4. 宝具相殺・壊れた幻想</h3>
+<p>宝具に対する「宝具相殺」、宝具を破壊して攻撃に転用する「壊れた幻想（ブロークン・ファンタズム）」は、いずれも1ラウンドに1回まで使用できる特殊アクションである。詳細な条件と処理は第5章「宝具相殺」「壊れた幻想」の各項を参照すること。</p>
+
+<!-- ======================================================= -->
+<!-- 9. 同盟関連 -->
+<!-- ======================================================= -->
+<h2 class="chapter" id="alliance">9. 同盟関連</h2>
+
+<h3>9-1. 同盟と個別チャット</h3>
+<ul>
+<li>複数の陣営は合意により「同盟」を結ぶことができる。同盟者同士は情報共有や共同戦闘が可能となり、一部スキル/宝具の「同盟含む味方陣営」の対象に含まれる。</li>
+<li>各参加者は「個別チャット（個別チャット開設権）」を用いて他陣営と交渉できる。開設回数の既定は2回で、マスタースキル「交渉巧者」で4回に増加する。</li>
+<li>マスタースキル「雇われ人」を保有する陣営とその雇い主は、他陣営に先んじて同盟チャットを開設できる（第3章「0日目処理」参照）。</li>
+</ul>
+<div class="notice"><b>同盟の運用：</b>同盟の解消・裏切りの可否、戦利品の分配等はトラブルを避けるため卓開始前に取り決めておくことが望ましい。取り決めが無い場合はGM裁定とする。</div>
+
+<!-- ======================================================= -->
+<!-- 10. 討伐令関連 -->
+<!-- ======================================================= -->
+<h2 class="chapter" id="subjugation">10. 討伐令関連</h2>
+
+<h3>10-1. 討伐令</h3>
+<ul>
+<li>聖杯または監督役（GM）から発令される特別な指令。達成すると報酬として令呪が追加配布される場合がある（第6章「令呪」参照）。</li>
+<li>発令者・対象・条件・報酬はGMが設定する。盤面が停滞した際の調整や、協力要素の導入として運用される。</li>
+</ul>
+<div class="tip"><b>運用のヒント：</b>討伐令は、PvPに偏りがちな聖杯戦争に共通目標や協力要素を持ち込むGMツールとして機能する。第3章「オプションルール：日数制限」と併用して盤面の停滞を打開する手段にもなる。</div>
+
+<!-- ======================================================= -->
+<!-- 11. Q&A・エラッタ -->
+<!-- ======================================================= -->
+<h2 class="chapter" id="qa">11. Q&amp;A・エラッタ</h2>
+
+<h3>11-1. よくある質問</h3>
+
+<div class="qa"><b>Q. FPが0になると戦闘不能になりますか？</b><br>
+A. いいえ。FPが0になってもペナルティはありません。ただしFPが0未満になるような行動（コスト不足のスキル使用等）はできません。行動不能になるのは、HPが0以下になって「気絶」状態へ移行した場合です。</div>
+
+<div class="qa"><b>Q. HPが0になったら即座に死亡しますか？</b><br>
+A. いいえ。HPが0以下になるとまず「気絶」状態になり行動不能となります。マイナス分が自身の「【耐久】×2」を超えると「死亡/消滅」します。気絶中にHPが1以上へ回復すれば、次ラウンドから行動を再開できます。</div>
+
+<div class="qa"><b>Q. 自分への宝具を打ち消したいのですが、いつでも相殺できますか？</b><br>
+A. いいえ。「宝具相殺」には、相殺対象の宝具データを所持していること、自身の宝具データを1つ開示すること、相手の消費FPと同点のFPを支払うこと等の条件があります。初見の宝具は原則として相殺できません。詳細は第5章「宝具相殺」を参照してください。</div>
+
+<div class="qa"><b>Q. 「壊れた幻想」はどんな時に使えますか？</b><br>
+A. 自身のHPが「最大HPの50％以下（切上げ）」のときに使用できます。保有する宝具を1つ破壊し、その『消費FP×2』点の補正値を攻撃判定に加算します。1ラウンド1回まで、このアクション自体にFPは消費しません。詳細は第5章「壊れた幻想」を参照してください。</div>
+
+<div class="qa"><b>Q. 英雄点と探索点は使い回せますか？</b><br>
+A. 用途が異なる別リソースです。英雄点は能力値ランク・属性・スキル/宝具の取得に、探索点は探索技能（肉体・知覚・教養）への割り振りに使用します。相互に変換することはできません。</div>
+
+<div class="qa"><b>Q. 戦闘中に自分の配置（前衛・後衛）を変えられますか？</b><br>
+A. 汎用アクション「配置転換」（FP1点）で変更できます。ただし自陣営の手番中、最速のタイミングでしか実行できず、1戦闘につき1回までです（マスタースキル「戦闘機動」で回数を増やせます）。</div>
+
+<h3>11-2. エラッタ・補足</h3>
+<div class="notice"><b>本資料について：</b>本資料は二次創作・非公式のまとめです。記載と原典・卓の運用に差異がある場合は、GMの裁定を最優先してください。気づいた誤記・矛盾点は卓内で共有し、ハウスルールとして調整することを推奨します。</div>
+
+<!-- ======================================================= -->
+<!-- 拡張ルール：追加スキル/宝具 -->
+<!-- ======================================================= -->
+<h2 class="chapter" id="ex-skill">拡張ルール：追加スキル / 宝具</h2>
+
+<p>基本ルールに加え、卓の合意とGMの許可がある場合に使用できる拡張スキル・宝具群。バランスを崩しやすいため、導入時は必ず卓全体で確認すること。</p>
+
+<div class="skill">
+<div class="hd">ソウルイーター　※拡張版</div>
+<div class="bd">撃破した対象のヒーローポイント、または特定リソースの一部を吸収し、自身に加算する。強力なため取得には追加コストとGM承認を要する。連戦シナリオでは雪だるま式に強化されるため、上限設定を推奨する。</div>
+</div>
+
+<div class="skill">
+<div class="hd">霊基改造（拡張）</div>
+<div class="bd">セッション間または特定条件下で、サーヴァントの霊基（ステータス構成・スキル構成）を一部組み替える拡張ルール。キャンペーン形式での成長要素として運用する。改造にはヒーローポイントの再割り振り、またはシナリオ報酬の消費を伴う。</div>
+</div>
+
+<div class="skill">
+<div class="hd">従者（トループ）召喚</div>
+<div class="bd">サーヴァントが使い魔・眷属などの従者を召喚する拡張。従者は簡易ステータスを持ち、数による戦術や盾役として機能する。召喚数・維持コストはGMが管理し、フィールド配置（前衛・後衛）に組み込む。</div>
+</div>
+
+<div class="notice"><b>拡張ルール全般の注意：</b>追加スキル・宝具・改造系の要素はゲームバランスへの影響が大きい。基本ルールに慣れた卓での導入を推奨し、PvP卓では特に全員の合意を取ること。</div>
+
+<!-- ======================================================= -->
+<!-- 拡張ルール：階級制度 -->
+<!-- ======================================================= -->
+<h2 class="chapter" id="ex-class">拡張ルール：階級制度</h2>
+
+<p>参加者・陣営に「階級」を設定し、立場の違いをロールプレイや特典に反映させる拡張ルール。物語に序列・政治的緊張・成り上がり要素を持ち込むことができる。</p>
+
+<h3>階級一覧</h3>
+<div class="tablewrap"><table>
+<tr><th>階級</th><th>立場</th><th>特典／制約の例</th></tr>
+<tr><td>上位</td><td>名門・大魔術師・教会上層など。</td><td>潤沢な資源・情報網。ただし注目を集めやすく標的になりやすい。</td></tr>
+<tr><td>中位</td><td>一般的な参加者・地方の魔術師など。</td><td>標準的なリソース。特典・制約ともに中庸。</td></tr>
+<tr><td>下位</td><td>新参・はぐれ・無名の参加者など。</td><td>リソースは乏しいが、警戒されにくく奇襲・潜伏に向く。成り上がりの余地が大きい。</td></tr>
+</table></div>
+
+<h3>階級の変動</h3>
+<p>シナリオ中の功績（討伐令達成、他陣営撃破、政治的駆け引きの成功など）により階級は上昇・下降する。階級変動はGMが裁定し、リソースやHO上の立場に反映される。</p>
+
+<div class="notice"><b>注意：</b>階級制度はロールプレイの厚みを増す一方、参加者間の格差が固定化すると不公平感を生む。下位からの逆転要素を必ず用意し、階級が即「勝敗」に直結しないよう調整すること。</div>
+
+<!-- ======================================================= -->
+<!-- 拡張ルール：亜種二連聖杯戦争 -->
+<!-- ======================================================= -->
+<h2 class="chapter" id="ex-double">拡張ルール：亜種二連聖杯戦争</h2>
+
+<p>通常の聖杯戦争を変則化した拡張シナリオ形式。2つの聖杯戦争が連動・並行して進行する大規模ルールであり、長期キャンペーンや大人数卓向け。</p>
+
+<h3>基本構造</h3>
+<div class="tablewrap"><table>
+<tr><th>要素</th><th>内容</th></tr>
+<tr><td>二連の意味</td><td>2つの戦争（第一戦・第二戦、または表・裏）が連結して進行する。第一戦の結果が第二戦の初期条件に影響する。</td></tr>
+<tr><td>参加陣営</td><td>通常より多い陣営数を想定。陣営は両戦争にまたがって行動する場合がある。</td></tr>
+<tr><td>聖杯の数</td><td>2つ（またはそれ以上）。最終的な勝者を巡って二段階の決着を行う。</td></tr>
+<tr><td>進行</td><td>第一戦 → 中間フェイズ（再編・同盟見直し）→ 第二戦 → 最終決着。</td></tr>
+</table></div>
+
+<div class="diagram">
+<div class="dwrap-title">亜種二連聖杯戦争の進行</div>
+<div class="dgrid">
+<div class="dbox">第一戦<br><span style="font-weight:normal;font-size:12px;">予選的戦闘</span></div>
+<div class="dconn">▶</div>
+<div class="dbox sub">中間フェイズ<br><span style="font-size:12px;">再編・同盟</span></div>
+<div class="dconn">▶</div>
+<div class="dbox">第二戦<br><span style="font-weight:normal;font-size:12px;">本戦</span></div>
+<div class="dconn">▶</div>
+<div class="dbox warn">最終決着<br><span style="font-size:12px;">勝者確定</span></div>
+</div>
+</div>
+
+<h3>特殊ルール</h3>
+<div class="tablewrap"><table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>戦果の持ち越し</td><td>第一戦で得たヒーローポイント・情報・同盟関係の一部を第二戦に持ち越せる。</td></tr>
+<tr><td>脱落と復帰</td><td>第一戦で脱落した陣営にも、条件付きで第二戦への復帰機会を与えられる（GM裁定）。</td></tr>
+<tr><td>聖杯の争奪</td><td>2つの聖杯を巡る駆け引きが発生。片方の聖杯のみ獲得した状態でも一定の勝利条件を満たす場合がある。</td></tr>
+</table></div>
+
+<h3>勝利条件</h3>
+<p>最終決着において、2つの聖杯の双方または規定数を制した陣営が勝利する。詳細な勝利条件（独占・優位・共存など）はシナリオごとにGMが設定する。</p>
+
+<div class="notice"><b>運用上の注意：</b>大規模ルールのため、進行管理・時間配分・人数調整が難しい。GMは複数セッションに分割し、中間フェイズで状況を整理することを強く推奨する。初心者卓ではなく、ルールに習熟した卓での実施が望ましい。</div>
+
+<!-- ======================================================= -->
+<!-- 完結 -->
+<!-- ======================================================= -->
+<h2 class="chapter" id="ex-end">本資料 完結</h2>
+<div class="tip"><b>＝あとがき＝</b><br>本資料は「聖杯戦争TRPG Ver.T」の非公式・二次創作ルールまとめです。世界観設定、キャラクリエイト（共通・サーヴァント・マスター）、判定、戦闘、同盟、討伐令、Q&amp;A、各種拡張ルール（追加スキル/宝具・階級制度・亜種二連聖杯戦争）まで、全章を収録しました。卓での運用にあたっては、GMの裁定とプレイヤー全員の合意を最優先してください。良いセッションを。</div>
+
+<a href="#" class="backtop" title="トップへ">↑</a>
+
+</div><!-- /content -->
+</main>
+</div><!-- /layout -->
+
+<script>
+/* ===== サイドバー開閉（モバイル） ===== */
+var toggle = document.getElementById('toggle');
+var sidebar = document.getElementById('sidebar');
+if (toggle) {
+  toggle.addEventListener('click', function(){ sidebar.classList.toggle('open'); });
+}
+/* サイドバーのリンクを押したらモバイルでは閉じる */
+document.querySelectorAll('#nav a').forEach(function(a){
+  a.addEventListener('click', function(){
+    if (window.innerWidth <= 900) sidebar.classList.remove('open');
+  });
+});
+
+/* ===== トップへ戻るボタン ===== */
+var backtop = document.querySelector('.backtop');
+if (backtop) {
+  window.addEventListener('scroll', function(){
+    backtop.style.display = (window.scrollY > 400) ? 'flex' : 'none';
+  });
+  backtop.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* ===== スクロール連動ハイライト（スクロールスパイ） ===== */
+var chapters = Array.prototype.slice.call(document.querySelectorAll('h2.chapter'));
+var navLinks = Array.prototype.slice.call(document.querySelectorAll('#nav a'));
+function spy(){
+  var pos = window.scrollY + 120;
+  var current = null;
+  chapters.forEach(function(c){
+    if (c.offsetTop <= pos) current = c.id;
+  });
+  navLinks.forEach(function(a){
+    var href = a.getAttribute('href');
+    if (href === '#' + current) a.classList.add('active');
+    else a.classList.remove('active');
+  });
+}
+window.addEventListener('scroll', spy);
+window.addEventListener('load', spy);
+
+/* ===== 全文検索（章単位で絞り込み＋ハイライト＋件数表示） ===== */
+var search = document.getElementById('search');
+var searchInfo = document.getElementById('searchInfo');
+var allChapters = Array.prototype.slice.call(document.querySelectorAll('h2.chapter'));
+
+/* 各章を「見出し～次の見出し直前」までの要素群としてグループ化 */
+function getChapterBlocks(){
+  var blocks = [];
+  allChapters.forEach(function(h){
+    var els = [h];
+    var n = h.nextElementSibling;
+    while (n && !n.classList.contains('chapter')) {
+      els.push(n);
+      n = n.nextElementSibling;
+    }
+    blocks.push({ id: h.id, els: els });
+  });
+  return blocks;
+}
+var chapterBlocks = getChapterBlocks();
+
+/* ハイライト解除（mark を元に戻す） */
+function clearMarks(root){
+  root.querySelectorAll('mark').forEach(function(m){
+    var t = document.createTextNode(m.textContent);
+    m.parentNode.replaceChild(t, m);
+    m.parentNode.normalize && m.parentNode.normalize();
+  });
+}
+
+/* テキストノードを走査してキーワードを mark で囲む */
+function highlight(el, kw){
+  if (!kw) return 0;
+  var hits = 0;
+  var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+  var targets = [];
+  while (walker.nextNode()) {
+    var node = walker.currentNode;
+    if (node.parentNode && node.parentNode.tagName === 'MARK') continue;
+    if (node.nodeValue.toLowerCase().indexOf(kw) !== -1) targets.push(node);
+  }
+  targets.forEach(function(node){
+    var frag = document.createDocumentFragment();
+    var text = node.nodeValue;
+    var low = text.toLowerCase();
+    var idx = 0, found;
+    while ((found = low.indexOf(kw, idx)) !== -1) {
+      if (found > idx) frag.appendChild(document.createTextNode(text.slice(idx, found)));
+      var mk = document.createElement('mark');
+      mk.textContent = text.slice(found, found + kw.length);
+      frag.appendChild(mk);
+      idx = found + kw.length;
+      hits++;
+    }
+    if (idx < text.length) frag.appendChild(document.createTextNode(text.slice(idx)));
+    node.parentNode.replaceChild(frag, node);
+  });
+  return hits;
+}
+
+if (search) {
+  search.addEventListener('input', function(){
+    var kw = search.value.trim().toLowerCase();
+    var content = document.getElementById('content');
+    clearMarks(content);
+
+    if (!kw) {
+      chapterBlocks.forEach(function(b){ b.els.forEach(function(e){ e.style.display = ''; }); });
+      searchInfo.textContent = '';
+      return;
+    }
+
+    var totalHits = 0, shownChapters = 0;
+    chapterBlocks.forEach(function(b){
+      var blockText = b.els.map(function(e){ return e.textContent; }).join(' ').toLowerCase();
+      var match = blockText.indexOf(kw) !== -1;
+      b.els.forEach(function(e){ e.style.display = match ? '' : 'none'; });
+      if (match) {
+        shownChapters++;
+        b.els.forEach(function(e){ totalHits += highlight(e, kw); });
+      }
+    });
+    searchInfo.textContent = '「' + search.value.trim() + '」: ' + totalHits + '件 / ' + shownChapters + '章';
+  });
+}
+</script>
+</body>
+</html>
+
+
+
